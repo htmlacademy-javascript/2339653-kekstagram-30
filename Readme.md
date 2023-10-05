@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Андрей Яландаев](https://up.htmlacademy.ru/javascript/30/user/2339653).
-* Наставник: `Неизвестно`.
+* Наставник: [Вячеслав Николаев](https://htmlacademy.ru/profile/slavka_piyavka).
 
 ---
 
