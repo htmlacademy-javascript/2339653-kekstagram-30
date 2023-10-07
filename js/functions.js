@@ -1,14 +1,13 @@
-
-// 1
+/*      1      */
 {
   const checksLenghtStr = (string, maxLengthStr) => string.length <= maxLengthStr;
 
-  console.log(checksLenghtStr('проверяемая строка', 10));
+  checksLenghtStr('проверяемая строка', 10);
 }
 
-// 2
+/*      2      */
 {
-  const polydromeCheck = function(string) {
+  const polydromeCheck = function (string) {
     const normalizeString = string.replaceAll(' ', '').toLowerCase();
     let newString = '';
 
@@ -16,8 +15,18 @@
       newString += normalizeString[i];
     }
 
-    return normalizeString === newString ? console.log(true) : console.log(false);
+    return normalizeString === newString;
   };
   polydromeCheck('Лёша на полке клопа нашёл ');
+}
+
+/*      3      */
+{
+  const extractNum = function (string) {
+    const valum = string.toString().replace(/\D/g, '');
+    return (parseInt(valum, 10));
+  };
+
+  extractNum('1 кефир, 0.5 батона');
 }
 
