@@ -90,5 +90,3 @@ for (let i = 0; i < createArrayPhoto.length; i++) {
   createArrayPhoto[i].url = `photos/${uniqueIdPhotos[i][i]}.jpg`;
   createArrayPhoto[i].comments.id = uniqueIdUsers[i][i];
 }
-
-console.log(createArrayPhoto);
