@@ -30,7 +30,7 @@ const MESSAGES = [
   'Ну что могу сказать. Для аватарки в одкоклассники сойдет',
   'Ты, наверное, на тиндере в статусе написал: Если тебе нечего мне сказать кроме "Hello World", то даже не думай мне писать?',
   'Руки-крюки! Шрайбикус из Вас никудышный!!!',
-  'Хочешь научиться фотографировать переходи по ссылке в моём профиле.',
+  'Хочешь научиться фотографировать, переходи по ссылке в моём профиле.',
   'Тебе не помешало бы пройти курсы на FotoAcademy.ru',
   'Щёлк, щёлк, щёлк, фоткаешь малыш...',
   'Айфон купил, а фоткать не научился.',
@@ -46,9 +46,6 @@ const getRandomIntegrated = (min, max) => {
 
   return Math.floor(result);
 };
-
-const getRandomArrayElement = (elements) =>
-  elements[getRandomIntegrated(0, elements.length - 1)];
 
 const getUniqueIdElement = (min, max) => {
   const createUniqueIdArray = [];
@@ -74,13 +71,13 @@ const createCardPhoto = () => ({
 
   id: 0,
   url: '',
-  description: getRandomArrayElement(DESCRIPTIONS),
+  description: DESCRIPTIONS[getRandomIntegrated(0, DESCRIPTIONS.length - 1)],
   likes: getRandomIntegrated(15, 200),
   comments: {
     id: getRandomIntegrated(1, 1000),
     avatar: `img/avatar${getRandomIntegrated(1, 6)}.jpg`,
-    message: getRandomArrayElement(MESSAGES),
-    name: getRandomArrayElement(NAMES),
+    message: MESSAGES[getRandomIntegrated(0, MESSAGES.length - 1)],
+    name: NAMES[getRandomIntegrated(0, NAMES.length - 1)],
   }
 });
 
