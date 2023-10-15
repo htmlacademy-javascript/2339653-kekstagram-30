@@ -61,9 +61,9 @@ const getUniqueIdElement = (min, max) => {
 
 const uniqueIdElements = Array.from({ length: 25 }, getUniqueIdElement(1, 25));
 
-const createCommentPhoto = (index) => ({
+const createCommentPhoto = (indexPhoto) => ({
 
-  id: uniqueIdElements[1].concat([26, 27, 28, 29, 30])[index],
+  id: uniqueIdElements[1].concat([26, 27, 28, 29, 30])[indexPhoto],
   avatar: `img/avatar${getRandomIntegrated(1, 6)}.jpg`,
   message: MESSAGES[getRandomIntegrated(0, MESSAGES.length - 1)],
   name: NAMES[getRandomIntegrated(0, NAMES.length - 1)],
@@ -75,9 +75,8 @@ const createCardPhoto = (index) => ({
   url: `photos/${index + 1}.jpg`,
   description: DESCRIPTIONS[getRandomIntegrated(0, DESCRIPTIONS.length - 1)],
   likes: getRandomIntegrated(15, 200),
-  comments: Array.from({ length: TOTAL_NUMBER_OBJECTS + 5 }, (_, index) => createCommentPhoto(index))
+  comments: Array.from({ length: TOTAL_NUMBER_OBJECTS + 5 }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
 });
 
+// eslint-disable-next-line no-unused-vars
 const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, index) => createCardPhoto(index));
-console.log(createArrayPhoto);
-
