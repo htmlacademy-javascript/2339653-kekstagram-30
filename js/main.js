@@ -60,27 +60,19 @@ const getUniqueIdElement = (min, max) => {
 };
 
 const uniqueIdElements = Array.from({ length: 25 }, getUniqueIdElement(1, 25));
-const uniqueIdPhotos = Array.from({ length: 25 }, getUniqueIdElement(1, 25));
-const uniqueIdEUsers = Array.from({ length: 25 }, getUniqueIdElement(1, 25));
 
-const createCardPhoto = () => ({
+const createCardPhoto = (index) => ({
 
-  id: 0,
-  url: '',
+  id: uniqueIdElements[1][index],
+  url: `photos/${index + 1}.jpg`,
   description: DESCRIPTIONS[getRandomIntegrated(0, DESCRIPTIONS.length - 1)],
   likes: getRandomIntegrated(15, 200),
   comments: {
-    id: getRandomIntegrated(1, 1000),
+    id: uniqueIdElements[1][index] + 10,
     avatar: `img/avatar${getRandomIntegrated(1, 6)}.jpg`,
     message: MESSAGES[getRandomIntegrated(0, MESSAGES.length - 1)],
     name: NAMES[getRandomIntegrated(0, NAMES.length - 1)],
   }
 });
 
-const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, createCardPhoto);
-for (let i = 0; i < createArrayPhoto.length; i++) {
-  createArrayPhoto[i].id = uniqueIdElements[i][i];
-  createArrayPhoto[i].url = `photos/${uniqueIdPhotos[i][i]}.jpg`;
-  createArrayPhoto[i].comments.id = uniqueIdEUsers[i][i];
-}
-
+const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, index) => createCardPhoto(index));
