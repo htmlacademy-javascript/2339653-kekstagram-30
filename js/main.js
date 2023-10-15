@@ -37,7 +37,11 @@ const MESSAGES = [
   'О, да Вы Пикассо в мире современного фотоискусства.',
 ];
 
+const TOTAL_NUMBER_COMMENTS = 30;
 const TOTAL_NUMBER_OBJECTS = 25;
+const TOTAL_NUMBER_AVATARS = 25;
+const MIN_LIKES_AMOUNT = 15;
+const MAX_LIKES_AMOUNT = 200;
 
 const getRandomIntegrated = (min, max) => {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
@@ -59,24 +63,24 @@ const getUniqueIdElement = (min, max) => {
   };
 };
 
-const uniqueIdElements = Array.from({ length: 25 }, getUniqueIdElement(1, 25));
+const uniqueIdElements = Array.from({ length: 25 }, getUniqueIdElement(1, TOTAL_NUMBER_OBJECTS));
+const uniqueIdComments = Array.from({ length: 30 }, getUniqueIdElement(1, TOTAL_NUMBER_COMMENTS));
 
-const createCommentPhoto = (indexPhoto) => ({
+const createCommentPhoto = (idPhoto) => ({
 
-  id: uniqueIdElements[1].concat([26, 27, 28, 29, 30])[indexPhoto],
-  avatar: `img/avatar${getRandomIntegrated(1, 6)}.jpg`,
+  id: uniqueIdComments[1][idPhoto],
+  avatar: `img/avatar${getRandomIntegrated(1, TOTAL_NUMBER_AVATARS)}.jpg`,
   message: MESSAGES[getRandomIntegrated(0, MESSAGES.length - 1)],
   name: NAMES[getRandomIntegrated(0, NAMES.length - 1)],
 });
 
-const createCardPhoto = (index) => ({
+const createCardPhoto = (id) => ({
 
-  id: uniqueIdElements[1][index],
-  url: `photos/${index + 1}.jpg`,
+  id: uniqueIdElements[1][id],
+  url: `photos/${id + 1}.jpg`,
   description: DESCRIPTIONS[getRandomIntegrated(0, DESCRIPTIONS.length - 1)],
-  likes: getRandomIntegrated(15, 200),
-  comments: Array.from({ length: TOTAL_NUMBER_OBJECTS + 5 }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
+  likes: getRandomIntegrated(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT),
+  comments: Array.from({ length: TOTAL_NUMBER_COMMENTS }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
 });
 
-// eslint-disable-next-line no-unused-vars
-const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, index) => createCardPhoto(index));
+const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, id) => createCardPhoto(id));
