@@ -59,13 +59,9 @@ const getUniqueIdElement = (min, max) => {
   };
 };
 
-const uniqueIdElement = getUniqueIdElement(1, 25);
-const uniqueIdPhoto = getUniqueIdElement(1, 25);
-const uniqueIdUser = getUniqueIdElement(1, 1000);
-
-const uniqueIdElements = Array.from({ length: 25 }, uniqueIdElement);
-const uniqueIdPhotos = Array.from({ length: 25 }, uniqueIdPhoto);
-const uniqueIdUsers = Array.from({ length: 25 }, uniqueIdUser);
+const uniqueIdElements = Array.from({ length: 25 }, getUniqueIdElement(1, 25));
+const uniqueIdPhotos = Array.from({ length: 25 }, getUniqueIdElement(1, 25));
+const uniqueIdEUsers = Array.from({ length: 25 }, getUniqueIdElement(1, 25));
 
 const createCardPhoto = () => ({
 
@@ -85,5 +81,6 @@ const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, createCard
 for (let i = 0; i < createArrayPhoto.length; i++) {
   createArrayPhoto[i].id = uniqueIdElements[i][i];
   createArrayPhoto[i].url = `photos/${uniqueIdPhotos[i][i]}.jpg`;
-  createArrayPhoto[i].comments.id = uniqueIdUsers[i][i];
+  createArrayPhoto[i].comments.id = uniqueIdEUsers[i][i];
 }
+
