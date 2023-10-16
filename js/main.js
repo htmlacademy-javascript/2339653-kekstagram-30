@@ -39,7 +39,7 @@ const MESSAGES = [
 
 const TOTAL_NUMBER_COMMENTS = 30;
 const TOTAL_NUMBER_OBJECTS = 25;
-const TOTAL_NUMBER_AVATARS = 25;
+const TOTAL_NUMBER_AVATARS = 6;
 const MIN_LIKES_AMOUNT = 15;
 const MAX_LIKES_AMOUNT = 200;
 
@@ -63,8 +63,8 @@ const getUniqueIdElement = (min, max) => {
   };
 };
 
-const uniqueIdElements = Array.from({ length: 25 }, getUniqueIdElement(1, TOTAL_NUMBER_OBJECTS));
-const uniqueIdComments = Array.from({ length: 30 }, getUniqueIdElement(1, TOTAL_NUMBER_COMMENTS));
+const uniqueIdElements = Array.from({ length: TOTAL_NUMBER_OBJECTS }, getUniqueIdElement(1, TOTAL_NUMBER_OBJECTS));
+const uniqueIdComments = Array.from({ length: TOTAL_NUMBER_COMMENTS }, getUniqueIdElement(1, TOTAL_NUMBER_COMMENTS));
 
 const createCommentPhoto = (idPhoto) => ({
 
@@ -80,7 +80,7 @@ const createCardPhoto = (id) => ({
   url: `photos/${id + 1}.jpg`,
   description: DESCRIPTIONS[getRandomIntegrated(0, DESCRIPTIONS.length - 1)],
   likes: getRandomIntegrated(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT),
-  comments: Array.from({ length: TOTAL_NUMBER_COMMENTS }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
+  comments: Array.from({ length: getRandomIntegrated(1, TOTAL_NUMBER_COMMENTS) }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
 });
 
 const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, id) => createCardPhoto(id));
