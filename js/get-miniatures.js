@@ -3,11 +3,11 @@ import { createArrayPhoto } from './data.js';
 const miniaturesList = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content;
 
-const createPictures = createArrayPhoto;
+// const createPictures = createArrayPhoto;
 
 const createListPictures = document.createDocumentFragment();
 
-createPictures.forEach(({ url, description, likes, comments }) => {
+createArrayPhoto.forEach(({ url, description, likes, comments }) => {
   const pictureElement = pictureTemplate.cloneNode(true);
   pictureElement.querySelector('.picture__img').src = url;
   pictureElement.querySelector('.picture__img').alt = description;
@@ -19,3 +19,4 @@ createPictures.forEach(({ url, description, likes, comments }) => {
 miniaturesList.appendChild(createListPictures);
 
 export { miniaturesList };
+
