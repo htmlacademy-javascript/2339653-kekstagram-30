@@ -19,5 +19,3 @@ createPictures.forEach(({ url, description, likes, comments }) => {
 miniaturesList.appendChild(createListPictures);
 
 export { miniaturesList };
-
-
