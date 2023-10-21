@@ -1,5 +1,5 @@
-import { miniaturesList } from './get-miniatures.js';
-import { getCommentsList } from './get-comments-list.js';
+import { miniaturesList } from './miniatures.js';
+import { getCommentsList } from './comments-list.js';
 import { isEscapeKey } from './util.js';
 
 
