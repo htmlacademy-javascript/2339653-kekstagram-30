@@ -7,15 +7,13 @@ const modalBigPicture = document.querySelector('.big-picture');
 const infoModalBigPicture = document.querySelector('.big-picture__social');
 const miniaturePictures = miniaturesList.querySelectorAll('.picture');
 const closeModalButton = modalBigPicture.querySelector('.big-picture__cancel');
+const showButton = document.querySelector('.comments-loader');
 const COMMENTS_UPLOAD_VOLUME = 5;
 
 
 const openModalBigPicture = () => {
   modalBigPicture.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
-
-  // document.querySelector('.social__comment-count').classList.add('hidden');
-  // document.querySelector('.comments-loader').classList.add('hidden');
 };
 
 const closeModalBigPicture = () => {
@@ -45,11 +43,10 @@ miniaturePictures.forEach((miniaturePicture) => {
     infoModalBigPicture.querySelector('.social__comment-total-count').textContent = miniaturePicture.querySelector('.picture__comments').textContent;
     const currentId = miniaturePicture.querySelector('.picture__img').id;
     getCommentsList(currentId);
-    document.querySelector('.social__comment-shown-count').innerHTML = COMMENTS_UPLOAD_VOLUME;
-    /**/
+
+
+    document.querySelector('.social__comment-shown-count').textContent = COMMENTS_UPLOAD_VOLUME;
     const socialComment = document.querySelectorAll('.social__comment');
-    const showButton = document.querySelector('.comments-loader');
-    /**/
     if (socialComment.length <= COMMENTS_UPLOAD_VOLUME) {
       showButton.classList.add('hidden');
     }
@@ -57,26 +54,6 @@ miniaturePictures.forEach((miniaturePicture) => {
     for (let i = COMMENTS_UPLOAD_VOLUME; i < socialComment.length; i++) {
       socialComment[i].classList.add('hidden');
     }
-    /**/
-    const showCount = document.querySelector('.social__comment-shown-count');
-
-    showButton.addEventListener('click', () => {
-      let showCountValue = +showCount.textContent;
-
-      console.log(showCountValue);
-
-      if (showCountValue <= socialComment.length && socialComment.length - showCountValue > COMMENTS_UPLOAD_VOLUME) {
-        showCount.textContent = showCountValue + COMMENTS_UPLOAD_VOLUME;
-
-      } else {
-        showCount.textContent = socialComment.length - showCountValue + showCountValue;
-        showButton.classList.add('hidden');
-        showCountValue = 0;
-      }
-
-    });
-
-
   });
 });
 
@@ -87,3 +64,17 @@ closeModalButton.addEventListener('click', () => {
 export { miniaturePictures };
 
 
+showButton.addEventListener('click', () => {
+  const showCount = document.querySelector('.social__comment-shown-count');
+  const socialComment = document.querySelectorAll('.social__comment');
+  let showCountValue = +showCount.textContent;
+
+  if (showCountValue <= socialComment.length && socialComment.length - showCountValue > COMMENTS_UPLOAD_VOLUME) {
+    showCount.textContent = showCountValue + COMMENTS_UPLOAD_VOLUME;
+
+  } else {
+    showCount.textContent = socialComment.length - showCountValue + showCountValue;
+    showButton.classList.add('hidden');
+    showCountValue = 0;
+  }
+});
