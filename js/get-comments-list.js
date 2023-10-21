@@ -3,7 +3,6 @@ import { createArrayPhoto } from './data';
 const bigPictureCommentsContainer = document.querySelector('.social__comments');
 const bigPictureCommentItem = bigPictureCommentsContainer.querySelector('.social__comment');
 
-
 const getCommentsList = (current) => {
   bigPictureCommentsContainer.innerHTML = '';
   const createCommentsList = document.createDocumentFragment();
@@ -18,6 +17,7 @@ const getCommentsList = (current) => {
   });
 
   bigPictureCommentsContainer.appendChild(createCommentsList);
+
 };
 
 export { getCommentsList };

@@ -39,7 +39,7 @@ const MESSAGES = [
   'Айфон купил, а фоткать не научился.',
   'О, да Вы Пикассо в мире современного фотоискусства.',
 ];
-
+const MIN_NUMBER_COMMENTS = 5;
 const TOTAL_NUMBER_COMMENTS = 30;
 const TOTAL_NUMBER_OBJECTS = 25;
 const TOTAL_NUMBER_AVATARS = 6;
@@ -63,7 +63,7 @@ const createCardPhoto = (id) => ({
   url: `photos/${id + 1}.jpg`,
   description: DESCRIPTIONS[getRandomIntegrated(0, DESCRIPTIONS.length - 1)],
   likes: getRandomIntegrated(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT),
-  comments: Array.from({ length: getRandomIntegrated(1, TOTAL_NUMBER_COMMENTS) }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
+  comments: Array.from({ length: getRandomIntegrated(MIN_NUMBER_COMMENTS, TOTAL_NUMBER_COMMENTS) }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
 });
 
 const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, id) => createCardPhoto(id));
