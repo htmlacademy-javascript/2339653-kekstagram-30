@@ -52,7 +52,7 @@ const uniqueIdComments = Array.from({ length: TOTAL_NUMBER_COMMENTS }, getUnique
 const createCommentPhoto = (idPhoto) => ({
 
   id: uniqueIdComments[1][idPhoto],
-  avatar: `img/avatar${getRandomIntegrated(1, TOTAL_NUMBER_AVATARS)}.jpg`,
+  avatar: `img/avatar-${getRandomIntegrated(1, TOTAL_NUMBER_AVATARS)}.svg`,
   message: MESSAGES[getRandomIntegrated(0, MESSAGES.length - 1)],
   name: NAMES[getRandomIntegrated(0, NAMES.length - 1)],
 });
@@ -69,4 +69,4 @@ const createCardPhoto = (id) => ({
 const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, id) => createCardPhoto(id));
 
 export {createArrayPhoto};
-export {createCardPhoto};
+
