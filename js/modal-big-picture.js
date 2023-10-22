@@ -7,9 +7,7 @@ import { createMiniaturesList } from './miniatures.js';
 
 const bigPictureModal = document.querySelector('.big-picture');
 const infoBigPictureModal = document.querySelector('.big-picture__social');
-
 const miniaturePictures = createMiniaturesList(createArrayPhoto).querySelectorAll('.picture');
-
 const closeModalButton = bigPictureModal.querySelector('.big-picture__cancel');
 const loadCommentsButton = document.querySelector('.comments-loader');
 const COMMENTS_UPLOAD_VOLUME = 5;
@@ -34,6 +32,12 @@ const onModalEscapeKeydown = () => {
   }, { once: true });
 };
 
+closeModalButton.addEventListener('click', () => {
+  closeBigPictureModal();
+});
+
+startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
+
 const getPictures = () => {
   miniaturePictures.forEach((miniaturePicture) => {
     miniaturePicture.addEventListener('click', (evt) => {
@@ -52,12 +56,6 @@ const getPictures = () => {
     });
   });
 };
-
-closeModalButton.addEventListener('click', () => {
-  closeBigPictureModal();
-});
-
-startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
 
 export { COMMENTS_UPLOAD_VOLUME };
 export { getPictures };
