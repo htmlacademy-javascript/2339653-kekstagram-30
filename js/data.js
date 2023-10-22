@@ -70,3 +70,7 @@ const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, id) =>
 
 export {createArrayPhoto};
 
+console.log(createArrayPhoto[0].comments[0]);
+console.log(createArrayPhoto[0].comments[1]);
+console.log(createArrayPhoto[0].comments[2]);
+

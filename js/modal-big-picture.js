@@ -3,7 +3,7 @@ import { isEscapeKey } from './util.js';
 import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
 import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
 import { createArrayPhoto } from './data.js';
-import { createMiniaturesList } from './get-miniatures.js';
+import { createMiniaturesList } from './miniatures.js';
 
 const bigPictureModal = document.querySelector('.big-picture');
 const infoBigPictureModal = document.querySelector('.big-picture__social');
