@@ -1,5 +1,5 @@
 import { createArrayPhoto } from './data.js';
-import { miniaturesList } from './miniatures.js';
+import { createMiniaturesList } from './get-miniatures.js';
 import { miniaturePictures } from './modal-big-picture.js';
-import { logic1 } from './list-comment-logic.js';
-import { logic2 } from './list-comment-logic.js';
+import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
+import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
