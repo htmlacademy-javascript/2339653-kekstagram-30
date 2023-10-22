@@ -34,22 +34,24 @@ const onModalEscapeKeydown = () => {
   }, { once: true });
 };
 
-miniaturePictures.forEach((miniaturePicture) => {
-  miniaturePicture.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    openBigPictureModal();
-    onModalEscapeKeydown();
+const getPictures = () => {
+  miniaturePictures.forEach((miniaturePicture) => {
+    miniaturePicture.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      openBigPictureModal();
+      onModalEscapeKeydown();
 
-    const currentId = miniaturePicture.querySelector('.picture__img').id;
-    getCommentsList(currentId, createArrayPhoto);
-    bigPictureModal.querySelector('img').src = miniaturePicture.querySelector('.picture__img').src;
-    infoBigPictureModal.querySelector('.likes-count').textContent = miniaturePicture.querySelector('.picture__likes').textContent;
-    infoBigPictureModal.querySelector('.social__caption').textContent = miniaturePicture.querySelector('.picture__img').alt;
-    infoBigPictureModal.querySelector('.social__comment-total-count').textContent = miniaturePicture.querySelector('.picture__comments').textContent;
+      const currentId = miniaturePicture.querySelector('.picture__img').id;
+      getCommentsList(currentId, createArrayPhoto);
+      bigPictureModal.querySelector('img').src = miniaturePicture.querySelector('.picture__img').src;
+      infoBigPictureModal.querySelector('.likes-count').textContent = miniaturePicture.querySelector('.picture__likes').textContent;
+      infoBigPictureModal.querySelector('.social__caption').textContent = miniaturePicture.querySelector('.picture__img').alt;
+      infoBigPictureModal.querySelector('.social__comment-total-count').textContent = miniaturePicture.querySelector('.picture__comments').textContent;
 
-    startLogicForUploadAdditionalComments(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
+      startLogicForUploadAdditionalComments(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
+    });
   });
-});
+};
 
 closeModalButton.addEventListener('click', () => {
   closeBigPictureModal();
@@ -57,6 +59,5 @@ closeModalButton.addEventListener('click', () => {
 
 startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
 
-export { miniaturePictures };
-export { loadCommentsButton };
 export { COMMENTS_UPLOAD_VOLUME };
+export { getPictures };
