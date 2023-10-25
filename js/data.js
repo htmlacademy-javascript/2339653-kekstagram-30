@@ -40,6 +40,7 @@ const MESSAGES = [
   'О, да Вы Пикассо в мире современного фотоискусства.',
 ];
 
+const MIN_NUMBER_COMMENTS = 5;
 const TOTAL_NUMBER_COMMENTS = 30;
 const TOTAL_NUMBER_OBJECTS = 25;
 const TOTAL_NUMBER_AVATARS = 6;
@@ -52,7 +53,7 @@ const uniqueIdComments = Array.from({ length: TOTAL_NUMBER_COMMENTS }, getUnique
 const createCommentPhoto = (idPhoto) => ({
 
   id: uniqueIdComments[1][idPhoto],
-  avatar: `img/avatar${getRandomIntegrated(1, TOTAL_NUMBER_AVATARS)}.jpg`,
+  avatar: `img/avatar-${getRandomIntegrated(1, TOTAL_NUMBER_AVATARS)}.svg`,
   message: MESSAGES[getRandomIntegrated(0, MESSAGES.length - 1)],
   name: NAMES[getRandomIntegrated(0, NAMES.length - 1)],
 });
@@ -63,9 +64,10 @@ const createCardPhoto = (id) => ({
   url: `photos/${id + 1}.jpg`,
   description: DESCRIPTIONS[getRandomIntegrated(0, DESCRIPTIONS.length - 1)],
   likes: getRandomIntegrated(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT),
-  comments: Array.from({ length: getRandomIntegrated(1, TOTAL_NUMBER_COMMENTS) }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
+  comments: Array.from({ length: getRandomIntegrated(MIN_NUMBER_COMMENTS, TOTAL_NUMBER_COMMENTS) }, (_, indexPhoto) => createCommentPhoto(indexPhoto))
 });
 
 const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, id) => createCardPhoto(id));
 
 export {createArrayPhoto};
+
