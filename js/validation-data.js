@@ -29,31 +29,41 @@ document.addEventListener('keydown', (evt) => {
 
 const pristine = new Pristine(formUploadFoto);
 
+const hashtagInput = document.querySelector('.text__hashtags');
+// const outlineDefaultStyle = hashtagInput.style.outline;
+const hashtagTest = /^#[a-zа-яё0-9]{1,19}$/i;
+const MAX_HASHTAG_AMOUNT = 5;
+
+
+const validateHashtags = () => {
+  const hashtagArray = hashtagInput.value.replace(/ +/g, ' ').trim().split(' ');
+
+  isElementRepeat(hashtagArray);
+
+  if (hashtagArray.length > MAX_HASHTAG_AMOUNT) {
+    return false;
+  }
+
+  return hashtagArray.every((hashtag) => hashtagTest.test(hashtag));
+};
+
+
+pristine.addValidator(hashtagInput, validateHashtags);
+
 formUploadFoto.addEventListener('submit', (evt) => {
   evt.preventDefault();
+
   const isValid = pristine.validate();
+
   if (isValid) {
     console.log('можно отправлять');
   } else {
-    console.log('нельзя отправлять')
+    console.log('нельзя отправлять');
   };
-
 });
 
 
-const hashtagInput = document.querySelector('.text__hashtags');
-const outlineDefaultStyle = hashtagInput.style.outline;
-const hashtagTest = /^#[a-zа-яё0-9]{1,19}$/i;
-
-hashtagInput.addEventListener('change', () => {
-  const hashtagArray = hashtagInput.value.replace(/ +/g, ' ').trim().split(' ');
-
-  console.log(hashtagArray);
-
-
-});
-
-
+// #dfg #lkj #lkj #dfdddf
 
 
 
