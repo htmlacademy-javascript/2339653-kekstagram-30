@@ -17,3 +17,5 @@ const checkMeetingForWorkingDay = (beginDay, endDay, beginMeetig, durationMeetin
   return ((start + durationMeeting) <= end && start >= begin);
 };
 
+
+checkMeetingForWorkingDay();
