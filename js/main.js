@@ -3,3 +3,4 @@ import { validateHashtags } from './validation-data.js';
 
 getPictures();
 validateHashtags();
+

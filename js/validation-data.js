@@ -55,6 +55,7 @@ formUploadFoto.addEventListener('submit', (evt) => {
   };
 });
 
+
 export { validateHashtags };
 
 
