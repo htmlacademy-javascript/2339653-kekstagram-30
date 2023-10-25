@@ -34,13 +34,16 @@ const hashtagInput = document.querySelector('.text__hashtags');
 const hashtagTest = /^#[a-zа-яё0-9]{1,19}$/i;
 const MAX_HASHTAG_AMOUNT = 5;
 
+const isRepeatHashtag = (array) => array.length !== new Set(array).size;
 
 const validateHashtags = () => {
   const hashtagArray = hashtagInput.value.replace(/ +/g, ' ').trim().split(' ');
 
-  isElementRepeat(hashtagArray);
-
   if (hashtagArray.length > MAX_HASHTAG_AMOUNT) {
+    return false;
+  }
+
+  if (isRepeatHashtag(hashtagArray)) {
     return false;
   }
 
@@ -63,8 +66,5 @@ formUploadFoto.addEventListener('submit', (evt) => {
 });
 
 
-// #dfg #lkj #lkj #dfdddf
-
-
-
 export { uploadFotoInput };
+
