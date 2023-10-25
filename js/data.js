@@ -40,6 +40,7 @@ const MESSAGES = [
   'О, да Вы Пикассо в мире современного фотоискусства.',
 ];
 
+const MIN_NUMBER_COMMENTS = 5;
 const TOTAL_NUMBER_COMMENTS = 30;
 const TOTAL_NUMBER_OBJECTS = 25;
 const TOTAL_NUMBER_AVATARS = 6;
