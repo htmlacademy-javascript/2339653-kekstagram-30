@@ -1,9 +1,9 @@
 import { getCommentsList } from './list-comments.js';
-import { isEscapeKey } from './util.js';
 import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
 import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
 import { createArrayPhoto } from './data.js';
 import { createMiniaturesList } from './miniatures.js';
+import { onModalEscapeKeydown } from './util.js';
 
 const bigPictureModal = document.querySelector('.big-picture');
 const infoBigPictureModal = document.querySelector('.big-picture__social');
@@ -23,15 +23,6 @@ const closeBigPictureModal = () => {
   document.querySelector('.comments-loader').classList.remove('hidden');
 };
 
-const onModalEscapeKeydown = () => {
-  document.addEventListener('keydown', (evt) => {
-    if (isEscapeKey(evt)) {
-      evt.preventDefault();
-      closeBigPictureModal();
-    }
-  }, { once: true });
-};
-
 closeModalButton.addEventListener('click', () => {
   closeBigPictureModal();
 });
@@ -43,7 +34,7 @@ const getPictures = () => {
     miniaturePicture.addEventListener('click', (evt) => {
       evt.preventDefault();
       openBigPictureModal();
-      onModalEscapeKeydown();
+      onModalEscapeKeydown(closeBigPictureModal);
 
       const currentId = miniaturePicture.querySelector('.picture__img').id;
       getCommentsList(currentId, createArrayPhoto);
@@ -59,3 +50,4 @@ const getPictures = () => {
 
 export { COMMENTS_UPLOAD_VOLUME };
 export { getPictures };
+export { onModalEscapeKeydown };

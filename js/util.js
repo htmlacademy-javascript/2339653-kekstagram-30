@@ -20,7 +20,29 @@ const getUniqueIdElement = (min, max) => {
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
+const stopIsEscapeKey = (element) => {
+  element.addEventListener('keydown', (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.stopPropagation();
+    }
+  });
+};
+
+const onModalEscapeKeydown = (callback) => {
+  document.addEventListener('keydown', (evt) => {
+
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      callback();
+    }
+  }, { once: true });
+};
+
+const isRepeatElement = (array) => array.length !== new Set(array).size;
+
 export {getRandomIntegrated};
 export {getUniqueIdElement};
 export {isEscapeKey};
-
+export { stopIsEscapeKey };
+export { onModalEscapeKeydown };
+export { isRepeatElement };
