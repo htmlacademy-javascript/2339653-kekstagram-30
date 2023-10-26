@@ -32,7 +32,6 @@ const stopIsEscapeKey = (element) => {
 
 const onModalEscapeKeydown = (callback) => {
   document.addEventListener('keydown', (evt) => {
-
     if (isEscapeKey(evt)) {
       evt.preventDefault();
       callback();
@@ -43,9 +42,9 @@ const onModalEscapeKeydown = (callback) => {
 const isRepeatElement = (array) => array.length !== new Set(array).size;
 
 export { checkStringLength };
-export {getRandomIntegrated};
-export {getUniqueIdElement};
-export {isEscapeKey};
+export { getRandomIntegrated };
+export { getUniqueIdElement };
+export { isEscapeKey };
 export { stopIsEscapeKey };
 export { onModalEscapeKeydown };
 export { isRepeatElement };
