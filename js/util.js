@@ -1,3 +1,5 @@
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
+
 const getRandomIntegrated = (min, max) => {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
   const upper = Math.ceil(Math.max(Math.abs(min), Math.abs(max)));
@@ -40,6 +42,7 @@ const onModalEscapeKeydown = (callback) => {
 
 const isRepeatElement = (array) => array.length !== new Set(array).size;
 
+export { checkStringLength };
 export {getRandomIntegrated};
 export {getUniqueIdElement};
 export {isEscapeKey};
