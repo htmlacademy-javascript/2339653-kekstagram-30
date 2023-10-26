@@ -10,6 +10,7 @@ const infoBigPictureModal = document.querySelector('.big-picture__social');
 const miniaturePictures = createMiniaturesList(createArrayPhoto).querySelectorAll('.picture');
 const closeModalButton = bigPictureModal.querySelector('.big-picture__cancel');
 const loadCommentsButton = document.querySelector('.comments-loader');
+const inputCommentBigPicture = document.querySelector('.social__footer-text');
 const COMMENTS_UPLOAD_VOLUME = 5;
 
 const openBigPictureModal = () => {
@@ -26,6 +27,11 @@ const closeBigPictureModal = () => {
 closeModalButton.addEventListener('click', () => {
   closeBigPictureModal();
 });
+
+inputCommentBigPicture.addEventListener('blur', () => {
+  onModalEscapeKeydown(closeBigPictureModal);
+});
+
 
 startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
 
