@@ -1,5 +1,5 @@
-import {getRandomIntegrated} from './util.js';
-import {getUniqueIdElement} from './util.js';
+import { getRandomIntegrated } from './util.js';
+import { getUniqueIdElement } from './util.js';
 
 const DESCRIPTIONS = [
   'Безупречная красота.',
@@ -69,5 +69,4 @@ const createCardPhoto = (id) => ({
 
 const createArrayPhoto = Array.from({ length: TOTAL_NUMBER_OBJECTS }, (_, id) => createCardPhoto(id));
 
-export {createArrayPhoto};
-
+export { createArrayPhoto };
