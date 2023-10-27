@@ -1,25 +1,30 @@
 const sliderElement = document.querySelector('.effect-level__slider');
-const fotoPreview = document.querySelector('.upload__preview');
-let sizeFotoPreviev = document.querySelector('.scale__control--value');
-const buttomMinusSize = document.querySelector('.scale__control--smaller');
-const buttomPlusSize = document.querySelector('.scale__control--bigger');
+const fotoPreview = document.querySelector('.img-upload__preview img');
+const sizeFotoPreviev = document.querySelector('.scale__control--value');
+const buttonDecrementSize = document.querySelector('.scale__control--smaller');
+const buttomIncrementSize = document.querySelector('.scale__control--bigger');
+
+const MAX_SIZE_VALUE = 100;
+const MIN_SIZE_VALUE = 25;
+const SIZE_STEP = 25;
 
 
+const reducesSize = () => {
+  if (sizeFotoPreviev.value.replace(/\D/g, '') > MIN_SIZE_VALUE) {
+    sizeFotoPreviev.value = `${sizeFotoPreviev.value.replace(/\D/g, '') - SIZE_STEP}%`;
+    fotoPreview.style.transform = `scale(${+sizeFotoPreviev.value.replace(/\D/g, '') / 100})`;
+  }
+};
 
-buttomMinusSize.addEventListener('click', () => {
-  let currentSizefoto = sizeFotoPreviev.value;
-  console.log(sizeFotoPreviev.value);
+const increasesSize = () => {
+  if (sizeFotoPreviev.value.replace(/\D/g, '') < MAX_SIZE_VALUE) {
+    sizeFotoPreviev.value = `${+sizeFotoPreviev.value.replace(/\D/g, '') + SIZE_STEP}%`;
+    fotoPreview.style.transform = `scale(${+sizeFotoPreviev.value.replace(/\D/g, '') / 100})`;
+  }
+};
 
-  currentSizefoto = currentSizefoto.replace(/\D/g, '') - 25;
-  // console.log(currentSizefoto.replace(/\D/g, '') - 25);
-  console.log(currentSizefoto + '%');
-  sizeFotoPreviev.value = currentSizefoto + '%';
-  console.log(sizeFotoPreviev.value);
-});
-
-
-
-
+buttonDecrementSize.addEventListener('click', (reducesSize));
+buttomIncrementSize.addEventListener('click', (increasesSize));
 
 
 noUiSlider.create(sliderElement, {
