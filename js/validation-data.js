@@ -21,8 +21,11 @@ const checksFormValidation = () => {
     const isValid = pristine.validate();
 
     if (isValid) {
+      //Оставил пока к-логи, так как всяко пригодятся тут и ни раз, поэтому просто заглушил, чтобы гит хаб не ругался.
+      // eslint-disable-next-line no-console
       console.log('можно отправлять');
     } else {
+      // eslint-disable-next-line no-console
       console.log('нельзя отправлять');
     }
   });
