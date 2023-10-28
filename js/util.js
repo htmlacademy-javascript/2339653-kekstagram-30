@@ -1,3 +1,5 @@
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
+
 const getRandomIntegrated = (min, max) => {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
   const upper = Math.ceil(Math.max(Math.abs(min), Math.abs(max)));
@@ -20,7 +22,29 @@ const getUniqueIdElement = (min, max) => {
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomIntegrated};
-export {getUniqueIdElement};
-export {isEscapeKey};
+const stopIsEscapeKey = (element) => {
+  element.addEventListener('keydown', (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.stopPropagation();
+    }
+  });
+};
 
+const onModalEscapeKeydown = (callback) => {
+  document.addEventListener('keydown', (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      callback();
+    }
+  }, { once: true });
+};
+
+const isRepeatElement = (array) => array.length !== new Set(array).size;
+
+export { checkStringLength };
+export { getRandomIntegrated };
+export { getUniqueIdElement };
+export { isEscapeKey };
+export { stopIsEscapeKey };
+export { onModalEscapeKeydown };
+export { isRepeatElement };

@@ -1,15 +1,16 @@
 import { getCommentsList } from './list-comments.js';
-import { isEscapeKey } from './util.js';
 import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
 import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
 import { createArrayPhoto } from './data.js';
 import { createMiniaturesList } from './miniatures.js';
+import { onModalEscapeKeydown } from './util.js';
 
 const bigPictureModal = document.querySelector('.big-picture');
 const infoBigPictureModal = document.querySelector('.big-picture__social');
 const miniaturePictures = createMiniaturesList(createArrayPhoto).querySelectorAll('.picture');
 const closeModalButton = bigPictureModal.querySelector('.big-picture__cancel');
 const loadCommentsButton = document.querySelector('.comments-loader');
+const inputCommentBigPicture = document.querySelector('.social__footer-text');
 const COMMENTS_UPLOAD_VOLUME = 5;
 
 const openBigPictureModal = () => {
@@ -23,18 +24,14 @@ const closeBigPictureModal = () => {
   document.querySelector('.comments-loader').classList.remove('hidden');
 };
 
-const onModalEscapeKeydown = () => {
-  document.addEventListener('keydown', (evt) => {
-    if (isEscapeKey(evt)) {
-      evt.preventDefault();
-      closeBigPictureModal();
-    }
-  }, { once: true });
-};
-
 closeModalButton.addEventListener('click', () => {
   closeBigPictureModal();
 });
+
+inputCommentBigPicture.addEventListener('blur', () => {
+  onModalEscapeKeydown(closeBigPictureModal);
+});
+
 
 startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
 
@@ -43,7 +40,7 @@ const getPictures = () => {
     miniaturePicture.addEventListener('click', (evt) => {
       evt.preventDefault();
       openBigPictureModal();
-      onModalEscapeKeydown();
+      onModalEscapeKeydown(closeBigPictureModal);
 
       const currentId = miniaturePicture.querySelector('.picture__img').id;
       getCommentsList(currentId, createArrayPhoto);
@@ -59,3 +56,4 @@ const getPictures = () => {
 
 export { COMMENTS_UPLOAD_VOLUME };
 export { getPictures };
+export { onModalEscapeKeydown };
