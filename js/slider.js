@@ -23,7 +23,7 @@ const increasesSize = () => {
 buttonDecrementSize.addEventListener('click', (reducesSize));
 buttomIncrementSize.addEventListener('click', (increasesSize));
 
-
+const START_EFFECT_VALUE = 100;
 const sliderElement = document.querySelector('.effect-level__slider');
 const effectLevelContauner = document.querySelector('.effect-level');
 const effectLevelValue = document.querySelector('.effect-level__value');
@@ -50,22 +50,14 @@ noUiSlider.create(sliderElement, {
   connect: 'lower',
 });
 
-const FUCK = (styleEffect) => {
-  sliderElement.noUiSlider.on('update', () => {
-    effectLevelValue.value = sliderElement.noUiSlider.get();
-    fotoPreview.style.filter = styleEffect;
-    console.log(styleEffect);
-  });
-};
-
 
 effectList.addEventListener('change', (evt) => {
   if (evt.target.checked) {
     effectLevelContauner.classList.remove('hidden');
     fotoPreview.removeAttribute('class');
     fotoPreview.removeAttribute('style');
-    effectLevelValue.value = 100;
-    sizeFotoPreviev.value = '100%';
+    effectLevelValue.value = START_EFFECT_VALUE;
+    sizeFotoPreviev.value = `${START_EFFECT_VALUE}%`;
     fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
   }
   if (evt.target.value === 'none') {
