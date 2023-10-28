@@ -11,6 +11,7 @@ const MAX_LENGTH_COMMENT = 140;
 const pristine = new Pristine(formUploadFoto, {
   classTo: 'form-group',
   errorTextTag: 'div',
+  errorTextClass: 'img-upload__field-wrapper--error',
 });
 
 const validateHashtags = () => {
