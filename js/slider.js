@@ -7,6 +7,13 @@ const effectLevelContauner = document.querySelector('.effect-level');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const effectList = document.querySelector('.effects__list');
 
+effectLevelContauner.classList.add('hidden');
+
+const CURRENT_EFFECT = {
+  effect: '',
+  unit: '',
+};
+
 noUiSlider.create(sliderElement, {
   range: {
     min: 0,
@@ -28,7 +35,12 @@ noUiSlider.create(sliderElement, {
   connect: 'lower',
 });
 
-effectList.addEventListener('change', (evt) => {
+const setEffectValue = () => {
+  effectLevelValue.value = sliderElement.noUiSlider.get();
+  fotoPreview.style.filter = `${CURRENT_EFFECT.effect}(${effectLevelValue.value}${CURRENT_EFFECT.unit})`;
+};
+
+effectList.addEventListener('click', (evt) => {
   if (evt.target.checked) {
     effectLevelContauner.classList.remove('hidden');
     fotoPreview.removeAttribute('class');
@@ -38,12 +50,13 @@ effectList.addEventListener('change', (evt) => {
     fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
   }
   if (evt.target.value === 'none') {
+    CURRENT_EFFECT.effect = '';
+    CURRENT_EFFECT.unit = '';
     effectLevelContauner.classList.add('hidden');
-
   }
   if (evt.target.value === 'chrome') {
-    fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
-
+    CURRENT_EFFECT.effect = 'grayscale';
+    CURRENT_EFFECT.unit = '';
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 0,
@@ -51,17 +64,12 @@ effectList.addEventListener('change', (evt) => {
       },
       start: 1,
       step: 0.1,
-    });
-
-    sliderElement.noUiSlider.on('update', () => {
-      effectLevelValue.value = sliderElement.noUiSlider.get();
-      fotoPreview.style.filter = `grayscale(${effectLevelValue.value})`;
     });
   }
 
   if (evt.target.value === 'sepia') {
-    fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
-
+    CURRENT_EFFECT.effect = 'sepia';
+    CURRENT_EFFECT.unit = '';
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 0,
@@ -70,16 +78,10 @@ effectList.addEventListener('change', (evt) => {
       start: 1,
       step: 0.1,
     });
-
-    sliderElement.noUiSlider.on('update', () => {
-      effectLevelValue.value = sliderElement.noUiSlider.get();
-      fotoPreview.style.filter = `sepia(${effectLevelValue.value})`;
-    });
   }
-
   if (evt.target.value === 'marvin') {
-    fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
-
+    CURRENT_EFFECT.effect = 'invert';
+    CURRENT_EFFECT.unit = '%';
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 0,
@@ -88,16 +90,11 @@ effectList.addEventListener('change', (evt) => {
       start: 100,
       step: 1,
     });
-
-    sliderElement.noUiSlider.on('update', () => {
-      effectLevelValue.value = sliderElement.noUiSlider.get();
-      fotoPreview.style.filter = `blur(${effectLevelValue.value}px)`;
-    });
   }
 
   if (evt.target.value === 'phobos') {
-    fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
-
+    CURRENT_EFFECT.effect = 'blur';
+    CURRENT_EFFECT.unit = 'px';
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 0,
@@ -106,16 +103,10 @@ effectList.addEventListener('change', (evt) => {
       start: 3,
       step: 0.1,
     });
-
-    sliderElement.noUiSlider.on('update', () => {
-      effectLevelValue.value = sliderElement.noUiSlider.get();
-      fotoPreview.style.filter = `blur(${effectLevelValue.value}px)`;
-    });
   }
-
   if (evt.target.value === 'heat') {
-    fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
-
+    CURRENT_EFFECT.effect = 'brightness';
+    CURRENT_EFFECT.unit = '';
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 1,
@@ -124,13 +115,11 @@ effectList.addEventListener('change', (evt) => {
       start: 3,
       step: 0.1,
     });
-
-    sliderElement.noUiSlider.on('update', () => {
-      effectLevelValue.value = sliderElement.noUiSlider.get();
-      fotoPreview.style.filter = `brightness(${effectLevelValue.value})`;
-    });
   }
 });
 
+sliderElement.noUiSlider.on('update', setEffectValue);
 
+
+export { effectLevelContauner };
 export { sliderElement };
