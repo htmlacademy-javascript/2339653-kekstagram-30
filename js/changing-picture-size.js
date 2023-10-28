@@ -10,6 +10,7 @@ const reducesSize = () => {
   if (sizeFotoPreviev.value.replace(/\D/g, '') > MIN_SIZE_VALUE) {
     sizeFotoPreviev.value = `${sizeFotoPreviev.value.replace(/\D/g, '') - SIZE_STEP}%`;
     fotoPreview.style.transform = `scale(${+sizeFotoPreviev.value.replace(/\D/g, '') / 100})`;
+    sizeFotoPreviev.readonly = sizeFotoPreviev.value;
   }
 };
 
@@ -17,6 +18,7 @@ const increasesSize = () => {
   if (sizeFotoPreviev.value.replace(/\D/g, '') < MAX_SIZE_VALUE) {
     sizeFotoPreviev.value = `${+sizeFotoPreviev.value.replace(/\D/g, '') + SIZE_STEP}%`;
     fotoPreview.style.transform = `scale(${+sizeFotoPreviev.value.replace(/\D/g, '') / 100})`;
+    sizeFotoPreviev.readonly = sizeFotoPreviev.value;
   }
 };
 

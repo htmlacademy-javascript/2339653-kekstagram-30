@@ -37,6 +37,7 @@ noUiSlider.create(sliderElement, {
 
 const setEffectValue = () => {
   effectLevelValue.value = sliderElement.noUiSlider.get();
+  effectLevelValue.readonly = effectLevelValue.value;
   fotoPreview.style.filter = `${CURRENT_EFFECT.effect}(${effectLevelValue.value}${CURRENT_EFFECT.unit})`;
 };
 
@@ -119,7 +120,6 @@ effectList.addEventListener('click', (evt) => {
 });
 
 sliderElement.noUiSlider.on('update', setEffectValue);
-
 
 export { effectLevelContauner };
 export { sliderElement };
