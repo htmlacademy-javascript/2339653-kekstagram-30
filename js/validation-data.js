@@ -14,7 +14,7 @@ const pristine = new Pristine(formUploadFoto, {
   errorTextClass: 'img-upload__field-wrapper--error',
 });
 
-const validateHashtags = () => {
+const checksFormValidation = () => {
   formUploadFoto.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -62,6 +62,6 @@ pristine.addValidator(commentsInput, (value) => checkStringLength(value, MAX_LEN
 );
 
 export { hashtagInput, commentsInput };
-export { pristine, validateHashtags };
+export { pristine, checksFormValidation };
 
 
