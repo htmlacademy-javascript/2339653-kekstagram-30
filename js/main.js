@@ -3,7 +3,7 @@ import { getPictures } from './modal-big-picture.js';
 import { checksFormValidation } from './validation-data.js';
 import './server.js';
 
-getPictures();
+// getPictures();
 openUploadPictureModal();
 checksFormValidation();
 
