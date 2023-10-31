@@ -1,7 +1,9 @@
+const showCount = document.querySelector('.social__comment-shown-count');
+
 const startLogicForCommentShownCount = (button, commentsLengthDefault) => {
 
   button.addEventListener('click', () => {
-    const showCount = document.querySelector('.social__comment-shown-count');
+
     const socialComment = document.querySelectorAll('.social__comment');
     let showCountValue = +showCount.textContent;
 
@@ -17,7 +19,7 @@ const startLogicForCommentShownCount = (button, commentsLengthDefault) => {
 
 const startLogicForUploadAdditionalComments = (button, commentsLength) => {
 
-  document.querySelector('.social__comment-shown-count').textContent = commentsLength;
+  showCount.textContent = commentsLength;
   const socialComment = document.querySelectorAll('.social__comment');
   socialComment.forEach((element) => element.classList.add('hidden'));
 
@@ -28,11 +30,10 @@ const startLogicForUploadAdditionalComments = (button, commentsLength) => {
   let currentNumberVisibleComments = commentsLength;
 
   const checkСommentsLength = (increment) => {
-
-    for (let i = 0 + increment; i < currentNumberVisibleComments && currentNumberVisibleComments; i++) {
-      if (currentNumberVisibleComments > socialComment.length) {
-        currentNumberVisibleComments = socialComment.length;
-      }
+    if (currentNumberVisibleComments > socialComment.length) {
+      currentNumberVisibleComments = socialComment.length;
+    }
+    for (let i = 0 + increment; i < currentNumberVisibleComments; i++) {
       socialComment[i].classList.remove('hidden');
     }
     currentNumberVisibleComments = currentNumberVisibleComments + commentsLength;
