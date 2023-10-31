@@ -44,6 +44,6 @@ const openUploadPictureModal = () => {
   });
 };
 
-export { openUploadPictureModal, closeUploadPictureModal, clearsFieldsUploadPictureModal };
+export { openUploadPictureModal, closeUploadPictureModal, clearsFieldsUploadPictureModal, overlayForForm };
 
 

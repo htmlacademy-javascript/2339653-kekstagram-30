@@ -1,8 +1,8 @@
 import { openUploadPictureModal, closeUploadPictureModal } from './form-modal-window.js';
 import { getPictures } from './modal-big-picture.js';
 import { checksFormValidation } from './validation-data.js';
-import { getDataFromServer } from './server.js';
-import { errorMessages } from './error-message.js';
+import { getDataFromServer } from './api.js';
+import { errorMessagesForGet } from './error-message.js';
 
 
 openUploadPictureModal();
@@ -10,6 +10,6 @@ openUploadPictureModal();
 
 checksFormValidation(closeUploadPictureModal);
 
-getDataFromServer(getPictures, errorMessages);
+getDataFromServer(getPictures, errorMessagesForGet);
 
 // sendDataForServer(successMessages);
