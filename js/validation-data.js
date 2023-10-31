@@ -1,5 +1,9 @@
+import { errorMessages } from './error-message.js';
 import { isRepeatElement } from './util.js';
 import { checkStringLength } from './util.js';
+import { sendDataForServer } from './server.js';
+import { successMessages } from './error-message.js';
+
 
 const formUploadFoto = document.querySelector('.img-upload__form');
 const hashtagInput = document.querySelector('.text__hashtags');
@@ -14,7 +18,7 @@ const pristine = new Pristine(formUploadFoto, {
   errorTextClass: 'img-upload__field-wrapper--error',
 });
 
-const checksFormValidation = () => {
+const checksFormValidation = (onSuccess) => {
   formUploadFoto.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -24,6 +28,13 @@ const checksFormValidation = () => {
       //Оставил пока к-логи, так как всяко пригодятся тут и ни раз, поэтому просто заглушил, чтобы гит хаб не ругался.
       // eslint-disable-next-line no-console
       console.log('можно отправлять');
+      sendDataForServer(new FormData(evt.target), successMessages)
+        .then(onSuccess)
+        .catch(() => {
+          errorMessages();
+        });
+
+
     } else {
       // eslint-disable-next-line no-console
       console.log('нельзя отправлять');

@@ -27,3 +27,4 @@ buttomIncrementSize.addEventListener('click', (increasesSize));
 
 export { fotoPreview };
 export { sizeFotoPreviev };
+export { MAX_SIZE_VALUE };
