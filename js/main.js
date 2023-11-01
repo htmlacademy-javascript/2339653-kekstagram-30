@@ -4,6 +4,7 @@ import { checksFormValidation } from './validation-data.js';
 import { getDataFromServer } from './api.js';
 import { createMiniaturesList } from './miniatures.js';
 import { setFilterHandlers } from './image-display-filter.js';
+import './upload-foto.js';
 
 openUploadPictureModal();
 
