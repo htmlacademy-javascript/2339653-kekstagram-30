@@ -67,7 +67,6 @@ effectList.addEventListener('click', (evt) => {
       step: 0.1,
     });
   }
-
   if (evt.target.value === 'sepia') {
     CURRENT_EFFECT.effect = 'sepia';
     CURRENT_EFFECT.unit = '';

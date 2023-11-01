@@ -1,7 +1,6 @@
 import { getCommentsList } from './list-comments.js';
 import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
 import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
-import { createMiniaturesList } from './miniatures.js';
 import { onModalEscapeKeydown } from './util.js';
 
 const bigPictureModal = document.querySelector('.big-picture');
@@ -32,8 +31,7 @@ inputCommentBigPicture.addEventListener('blur', () => {
 
 startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
 
-const getPictures = (data) => {
-  createMiniaturesList(data);
+const showBigPicture = (data) => {
   const miniaturePictures = document.querySelectorAll('.picture');
   miniaturePictures.forEach((miniaturePicture) => {
     miniaturePicture.addEventListener('click', (evt) => {
@@ -56,5 +54,5 @@ const getPictures = (data) => {
   });
 };
 
-export { getPictures };
+export { showBigPicture };
 

@@ -1,15 +1,19 @@
 import { openUploadPictureModal, closeUploadPictureModal } from './form-modal-window.js';
-import { getPictures } from './modal-big-picture.js';
+import { showBigPicture } from './modal-big-picture.js';
 import { checksFormValidation } from './validation-data.js';
 import { getDataFromServer } from './api.js';
-import { errorMessagesForGet } from './error-message.js';
-
+import { createMiniaturesList } from './miniatures.js';
+import { setFilterHandlers } from './image-display-filter.js';
 
 openUploadPictureModal();
 
 
 checksFormValidation(closeUploadPictureModal);
 
-getDataFromServer(getPictures, errorMessagesForGet);
+getDataFromServer((posts) => {
+  createMiniaturesList(posts);
+  showBigPicture(posts);
+  setFilterHandlers(posts);
+});
 
 // sendDataForServer(successMessages);

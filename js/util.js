@@ -41,6 +41,14 @@ const onModalEscapeKeydown = (callback) => {
 
 const isRepeatElement = (array) => array.length !== new Set(array).size;
 
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
 export { checkStringLength };
 export { getRandomIntegrated };
 export { getUniqueIdElement };
@@ -48,3 +56,4 @@ export { isEscapeKey };
 export { stopIsEscapeKey };
 export { onModalEscapeKeydown };
 export { isRepeatElement };
+export { debounce };
