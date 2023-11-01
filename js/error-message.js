@@ -1,11 +1,9 @@
 import { onModalEscapeKeydown } from './util';
 import { clearsFieldsUploadPictureModal } from './form-modal-window';
 
-const ERROR_MESSAGE_DEFAULT = 'Ошибка загрузки файла';
 const errorMessageGetTemplate = document.querySelector('#data-error').content;
 const successMessageTemplate = document.querySelector('#success').content;
 const errorMessagePostTemplate = document.querySelector('#error').content;
-
 const ALERT_SHOW_TIME = 5000;
 
 const errorMessagesForGet = () => {
@@ -38,14 +36,12 @@ const successMessages = () => {
   buttonCloseSuccess.addEventListener('click', (closeSuccessWindow));
   overlayForSuccess.addEventListener('click', (closeSuccessWindow));
   successContainer.addEventListener('click', (evt) => evt.stopPropagation());
-
 };
 
-const errorMessageForPost = (message) => {
+const errorMessageForPost = () => {
 
   const createErrorMessage = document.createDocumentFragment();
   const errorMessage = errorMessagePostTemplate.cloneNode(true);
-  errorMessage.textContent = message;
   createErrorMessage.appendChild(errorMessage);
   document.body.appendChild(createErrorMessage);
 
@@ -62,9 +58,6 @@ const errorMessageForPost = (message) => {
   errorContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 
-// errorMessageForPost()
-
-
 export { successMessages };
 export { errorMessagesForGet };
-export { errorMessageForPost, ERROR_MESSAGE_DEFAULT };
+export { errorMessageForPost };

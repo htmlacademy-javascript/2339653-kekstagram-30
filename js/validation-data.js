@@ -1,8 +1,7 @@
-import { errorMessageForPost, ERROR_MESSAGE_DEFAULT } from './error-message.js';
+import { errorMessageForPost } from './error-message.js';
 import { isRepeatElement } from './util.js';
 import { checkStringLength } from './util.js';
 import { sendDataForServer } from './api.js';
-import { successMessages } from './error-message.js';
 
 const formUploadFoto = document.querySelector('.img-upload__form');
 const hashtagInput = document.querySelector('.text__hashtags');
@@ -33,7 +32,7 @@ const checksFormValidation = (onSuccess) => {
       sendDataForServer(new FormData(evt.target))
         .then(onSuccess)
         .catch(() => {
-          errorMessageForPost(ERROR_MESSAGE_DEFAULT);
+          errorMessageForPost();
         })
         .finally(() => {
           submitButton.disabled = false;
