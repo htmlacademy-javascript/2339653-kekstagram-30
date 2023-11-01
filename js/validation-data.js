@@ -1,9 +1,13 @@
+import { errorMessageForPost } from './error-message.js';
 import { isRepeatElement } from './util.js';
 import { checkStringLength } from './util.js';
+import { sendDataForServer } from './api.js';
+import { successMessages } from './error-message.js';
 
 const formUploadFoto = document.querySelector('.img-upload__form');
 const hashtagInput = document.querySelector('.text__hashtags');
 const commentsInput = document.querySelector('.text__description');
+const submitButton = document.querySelector('.img-upload__submit');
 const HASH_TAG_PATTERN = /^#[a-zа-яё0-9]{1,19}$/i;
 const MAX_HASHTAG_AMOUNT = 5;
 const MAX_LENGTH_COMMENT = 140;
@@ -14,16 +18,25 @@ const pristine = new Pristine(formUploadFoto, {
   errorTextClass: 'img-upload__field-wrapper--error',
 });
 
-const checksFormValidation = () => {
+const checksFormValidation = (onSuccess) => {
   formUploadFoto.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
     const isValid = pristine.validate();
 
     if (isValid) {
-      //Оставил пока к-логи, так как всяко пригодятся тут и ни раз, поэтому просто заглушил, чтобы гит хаб не ругался.
       // eslint-disable-next-line no-console
       console.log('можно отправлять');
+      submitButton.disabled = true;
+
+      sendDataForServer(new FormData(evt.target), successMessages)
+        .then(onSuccess)
+        .catch(() => {
+          errorMessageForPost();
+        })
+        .finally(() => {
+          submitButton.disabled = false;
+        });
     } else {
       // eslint-disable-next-line no-console
       console.log('нельзя отправлять');
