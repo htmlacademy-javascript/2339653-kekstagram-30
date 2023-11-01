@@ -1,6 +1,8 @@
 import { stopIsEscapeKey } from './util.js';
 import { onModalEscapeKeydown } from './util.js';
 import { hashtagInput, commentsInput, pristine } from './validation-data.js';
+import { effectLevelContauner } from './slider.js';
+import { fotoPreview } from './changing-picture-size.js';
 
 const overlayForForm = document.querySelector('.img-upload__overlay');
 const uploadFotoInput = document.querySelector('.img-upload__input');
@@ -13,6 +15,9 @@ const closeUploadPictureModal = () => {
   hashtagInput.value = '';
   commentsInput.value = '';
   pristine.reset();
+  effectLevelContauner.classList.add('hidden');
+  fotoPreview.removeAttribute('class');
+  fotoPreview.removeAttribute('style');
 };
 
 hashtagInput.addEventListener('blur', () => {
