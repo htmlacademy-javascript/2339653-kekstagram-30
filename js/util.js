@@ -21,6 +21,17 @@ const onModalEscapeKeydown = (callback) => {
 
 const isRepeatElement = (array) => array.length !== new Set(array).size;
 
+const getPictureRank = (picture) => {
+  const rank = picture.comments.length;
+  return rank;
+};
+
+const comparPictures = (pictureA, pictureB) => {
+  const rankA = getPictureRank(pictureA);
+  const rankB = getPictureRank(pictureB);
+  return rankB - rankA;
+};
+
 const debounce = (callback, timeoutDelay) => {
   let timeoutId;
   return (...rest) => {
@@ -34,4 +45,5 @@ export { isEscapeKey };
 export { stopIsEscapeKey };
 export { onModalEscapeKeydown };
 export { isRepeatElement };
+export { comparPictures };
 export { debounce };

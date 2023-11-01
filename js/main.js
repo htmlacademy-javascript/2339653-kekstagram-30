@@ -7,7 +7,6 @@ import { setFilterHandlers } from './image-display-filter.js';
 
 openUploadPictureModal();
 
-
 checksFormValidation(closeUploadPictureModal);
 
 getDataFromServer((posts) => {
@@ -16,4 +15,4 @@ getDataFromServer((posts) => {
   setFilterHandlers(posts);
 });
 
-// sendDataForServer(successMessages);
+

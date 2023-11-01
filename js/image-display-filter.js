@@ -1,6 +1,6 @@
-import { debounce } from './util.js';
 import { createMiniaturesList } from './miniatures';
 import { showBigPicture } from './modal-big-picture.js';
+import { comparPictures, debounce } from './util.js';
 
 const imageFilters = document.querySelector('.img-filters');
 const imageFiltersForm = imageFilters.querySelector('.img-filters__form');
@@ -10,18 +10,6 @@ const DEBOUNCE_TIME = 500;
 
 const showFilters = () => {
   imageFilters.classList.remove('img-filters--inactive');
-};
-
-const getPictureRank = (picture) => {
-  const rank = picture.comments.length;
-  return rank;
-};
-
-const comparPictures = (pictureA, pictureB) => {
-  const rankA = getPictureRank(pictureA);
-  const rankB = getPictureRank(pictureB);
-
-  return rankB - rankA;
 };
 
 const filterItems = (photos, filter) => {
@@ -40,8 +28,6 @@ const filterItems = (photos, filter) => {
     showBigPicture(photos);
   }
 };
-
-// switch currentValue
 
 const setFilterHandlers = (photos) => {
   const filterHandler = debounce(filterItems, DEBOUNCE_TIME);
