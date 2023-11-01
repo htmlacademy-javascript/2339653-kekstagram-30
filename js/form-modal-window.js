@@ -43,12 +43,11 @@ closeUploadPictureModalButton.addEventListener('click', () => {
   closeUploadPictureModal();
 });
 
-
 uploadFotoInput.addEventListener('change', () => {
   openUploadPictureModal();
   pictureUpload();
 });
 
-export { openUploadPictureModal, closeUploadPictureModal, clearsFieldsUploadPictureModal, overlayForForm };
+export { openUploadPictureModal, closeUploadPictureModal, clearsFieldsUploadPictureModal };
 
 

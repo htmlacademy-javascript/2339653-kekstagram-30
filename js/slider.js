@@ -91,7 +91,6 @@ effectList.addEventListener('click', (evt) => {
       step: 1,
     });
   }
-
   if (evt.target.value === 'phobos') {
     CURRENT_EFFECT.effect = 'blur';
     CURRENT_EFFECT.unit = 'px';
