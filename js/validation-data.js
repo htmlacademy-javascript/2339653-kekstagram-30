@@ -80,5 +80,5 @@ pristine.addValidator(commentsInput, (value) => checkStringLength(value, MAX_LEN
 
 export { hashtagInput, commentsInput };
 export { pristine, checksFormValidation };
-
+export { formUploadFoto };
 
