@@ -1,10 +1,14 @@
+import { showFilters } from './image-display-filter.js';
+import { errorMessagesForGet } from './error-message.js';
+import { successMessages } from './error-message.js';
+
 const ACADEMY_SERVER = 'https://30.javascript.pages.academy/kekstagram';
 const Route = {
   GET_DATA: '/data',
   SEND_DATA: '/',
 };
 
-const getDataFromServer = (createContent, error) => {
+const getDataFromServer = (cb) => {
   fetch(`${ACADEMY_SERVER}${Route.GET_DATA}`)
     .then((response) => {
       if (!response.ok) {
@@ -12,11 +16,14 @@ const getDataFromServer = (createContent, error) => {
       }
       return response.json();
     })
-    .then((pictures) => createContent(pictures))
-    .catch(() => error());
+    .then((pictures) => {
+      cb(pictures);
+      showFilters();
+    })
+    .catch(() => errorMessagesForGet());
 };
 
-const sendDataForServer = (body, success) => fetch(
+const sendDataForServer = (body) => fetch(
   `${ACADEMY_SERVER}${Route.SEND_DATA}`,
   {
     method: 'POST',
@@ -26,7 +33,7 @@ const sendDataForServer = (body, success) => fetch(
     if (!response.ok) {
       throw new Error();
     }
-    success();
+    successMessages();
   });
 
 export { getDataFromServer, sendDataForServer };

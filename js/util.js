@@ -1,25 +1,5 @@
 const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-const getRandomIntegrated = (min, max) => {
-  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
-  const upper = Math.ceil(Math.max(Math.abs(min), Math.abs(max)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-
-  return Math.floor(result);
-};
-
-const getUniqueIdElement = (min, max) => {
-  const createUniqueIdArray = [];
-  return () => {
-    let createUnicumCurrentId = getRandomIntegrated(min, max);
-    while (createUniqueIdArray.includes(createUnicumCurrentId)) {
-      createUnicumCurrentId = getRandomIntegrated(min, max);
-    }
-    createUniqueIdArray.push(createUnicumCurrentId);
-    return createUniqueIdArray;
-  };
-};
-
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const stopIsEscapeKey = (element) => {
@@ -41,10 +21,29 @@ const onModalEscapeKeydown = (callback) => {
 
 const isRepeatElement = (array) => array.length !== new Set(array).size;
 
+const getPictureRank = (picture) => {
+  const rank = picture.comments.length;
+  return rank;
+};
+
+const comparPictures = (pictureA, pictureB) => {
+  const rankA = getPictureRank(pictureA);
+  const rankB = getPictureRank(pictureB);
+  return rankB - rankA;
+};
+
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
 export { checkStringLength };
-export { getRandomIntegrated };
-export { getUniqueIdElement };
 export { isEscapeKey };
 export { stopIsEscapeKey };
 export { onModalEscapeKeydown };
 export { isRepeatElement };
+export { comparPictures };
+export { debounce };
