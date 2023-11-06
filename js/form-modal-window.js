@@ -3,6 +3,7 @@ import { onModalEscapeKeydown } from './util.js';
 import { hashtagInput, commentsInput, pristine } from './validation-data.js';
 import { effectLevelContauner } from './slider.js';
 import { fotoPreview, sizeFotoPreviev, MAX_SIZE_VALUE } from './changing-picture-size.js';
+import { pictureUpload } from './upload-foto.js';
 
 const overlayForForm = document.querySelector('.img-upload__overlay');
 const uploadFotoInput = document.querySelector('.img-upload__input');
@@ -25,6 +26,12 @@ const closeUploadPictureModal = () => {
   clearsFieldsUploadPictureModal();
 };
 
+const openUploadPictureModal = () => {
+  overlayForForm.classList.remove('hidden');
+  document.querySelector('body').classList.add('modal-open');
+  onModalEscapeKeydown(closeUploadPictureModal);
+};
+
 hashtagInput.addEventListener('blur', () => {
   onModalEscapeKeydown(closeUploadPictureModal);
 });
@@ -36,14 +43,11 @@ closeUploadPictureModalButton.addEventListener('click', () => {
   closeUploadPictureModal();
 });
 
-const openUploadPictureModal = () => {
-  uploadFotoInput.addEventListener('change', () => {
-    overlayForForm.classList.remove('hidden');
-    document.querySelector('body').classList.add('modal-open');
-    onModalEscapeKeydown(closeUploadPictureModal);
-  });
-};
+uploadFotoInput.addEventListener('change', () => {
+  openUploadPictureModal();
+  pictureUpload();
+});
 
-export { openUploadPictureModal, closeUploadPictureModal, clearsFieldsUploadPictureModal, overlayForForm };
+export { openUploadPictureModal, closeUploadPictureModal, clearsFieldsUploadPictureModal };
 
 

@@ -4,7 +4,6 @@ import { clearsFieldsUploadPictureModal } from './form-modal-window';
 const errorMessageGetTemplate = document.querySelector('#data-error').content;
 const successMessageTemplate = document.querySelector('#success').content;
 const errorMessagePostTemplate = document.querySelector('#error').content;
-
 const ALERT_SHOW_TIME = 5000;
 
 const errorMessagesForGet = () => {
@@ -37,7 +36,6 @@ const successMessages = () => {
   buttonCloseSuccess.addEventListener('click', (closeSuccessWindow));
   overlayForSuccess.addEventListener('click', (closeSuccessWindow));
   successContainer.addEventListener('click', (evt) => evt.stopPropagation());
-
 };
 
 const errorMessageForPost = () => {

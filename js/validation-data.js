@@ -2,7 +2,6 @@ import { errorMessageForPost } from './error-message.js';
 import { isRepeatElement } from './util.js';
 import { checkStringLength } from './util.js';
 import { sendDataForServer } from './api.js';
-import { successMessages } from './error-message.js';
 
 const formUploadFoto = document.querySelector('.img-upload__form');
 const hashtagInput = document.querySelector('.text__hashtags');
@@ -30,7 +29,7 @@ const checksFormValidation = (onSuccess) => {
       console.log('можно отправлять');
       submitButton.disabled = true;
 
-      sendDataForServer(new FormData(evt.target), successMessages)
+      sendDataForServer(new FormData(evt.target))
         .then(onSuccess)
         .catch(() => {
           errorMessageForPost();
@@ -80,5 +79,6 @@ pristine.addValidator(commentsInput, (value) => checkStringLength(value, MAX_LEN
 
 export { hashtagInput, commentsInput };
 export { pristine, checksFormValidation };
+export { sendDataForServer };
 
 
