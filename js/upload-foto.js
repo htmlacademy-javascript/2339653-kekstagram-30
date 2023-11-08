@@ -1,4 +1,4 @@
-import { errorMessageForPost } from './error-message';
+import { errorMessageForPost } from './status-message';
 import { closeUploadPictureModal } from './form-modal-window';
 
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];

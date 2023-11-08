@@ -2,7 +2,7 @@ import { stopIsEscapeKey } from './util.js';
 import { onModalEscapeKeydown } from './util.js';
 import { hashtagInput, commentsInput, pristine } from './validation-data.js';
 import { effectLevelContauner } from './slider.js';
-import { fotoPreview, sizeFotoPreviev, MAX_SIZE_VALUE } from './changing-picture-size.js';
+import { fotoPreview, sizeFotoPreview, MAX_SIZE_VALUE } from './changing-picture-size.js';
 import { pictureUpload } from './upload-foto.js';
 import { effectRadioButtons } from './slider.js';
 
@@ -18,7 +18,7 @@ const clearsFieldsUploadPictureModal = () => {
   effectLevelContauner.classList.add('hidden');
   fotoPreview.removeAttribute('class');
   fotoPreview.removeAttribute('style');
-  sizeFotoPreviev.setAttribute('value', `${MAX_SIZE_VALUE}%`);
+  sizeFotoPreview.setAttribute('value', `${MAX_SIZE_VALUE}%`);
 };
 
 const closeUploadPictureModal = () => {

@@ -1,5 +1,5 @@
 import { fotoPreview } from './changing-picture-size';
-import { sizeFotoPreviev } from './changing-picture-size';
+import { sizeFotoPreview } from './changing-picture-size';
 
 const START_EFFECT_VALUE = 100;
 const sliderElement = document.querySelector('.effect-level__slider');
@@ -56,7 +56,7 @@ effectList.addEventListener('click', (evt) => {
     fotoPreview.removeAttribute('class');
     fotoPreview.removeAttribute('style');
     effectLevelValue.value = START_EFFECT_VALUE;
-    fotoPreview.style.transform = `scale(${+sizeFotoPreviev.value.replace(/\D/g, '') / 100})`;
+    fotoPreview.style.transform = `scale(${+sizeFotoPreview.value.replace(/\D/g, '') / 100})`;
 
     fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
   }

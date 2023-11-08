@@ -1,6 +1,6 @@
 import { showFilters } from './image-display-filter.js';
-import { errorMessagesForGet } from './error-message.js';
-import { successMessages } from './error-message.js';
+import { errorMessagesForGet } from './status-message.js';
+import { successMessages } from './status-message.js';
 
 const ACADEMY_SERVER = 'https://30.javascript.pages.academy/kekstagram';
 const Route = {

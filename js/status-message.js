@@ -33,8 +33,8 @@ const successMessages = () => {
   };
 
   onModalEscapeKeydown(closeSuccessWindow);
-  buttonCloseSuccess.addEventListener('click', (closeSuccessWindow));
-  overlayForSuccess.addEventListener('click', (closeSuccessWindow));
+  buttonCloseSuccess.addEventListener('click', closeSuccessWindow);
+  overlayForSuccess.addEventListener('click', closeSuccessWindow);
   successContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 
@@ -60,8 +60,8 @@ const errorMessageForPost = () => {
     }
   }, { once: true });
 
-  buttonCloseError.addEventListener('click', (closeErrorWindow));
-  overlayForError.addEventListener('click', (closeErrorWindow));
+  buttonCloseError.addEventListener('click', closeErrorWindow);
+  overlayForError.addEventListener('click', closeErrorWindow);
   errorContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 
