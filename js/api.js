@@ -34,6 +34,7 @@ const sendDataForServer = (body) => fetch(
       throw new Error();
     }
     successMessages();
+
   });
 
 export { getDataFromServer, sendDataForServer };

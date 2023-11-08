@@ -28,8 +28,8 @@ const successMessages = () => {
   const successContainer = document.querySelector('.success__inner');
 
   const closeSuccessWindow = () => {
-    document.querySelector('.success').remove();
     clearsFieldsUploadPictureModal();
+    document.querySelector('.success').remove();
   };
 
   onModalEscapeKeydown(closeSuccessWindow);

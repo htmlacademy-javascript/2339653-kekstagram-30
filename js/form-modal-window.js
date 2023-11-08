@@ -10,7 +10,6 @@ const uploadFotoInput = document.querySelector('.img-upload__input');
 const closeUploadPictureModalButton = document.querySelector('.img-upload__cancel');
 
 const clearsFieldsUploadPictureModal = () => {
-  sizeFotoPreviev.value = `${MAX_SIZE_VALUE}%`;
   uploadFotoInput.value = '';
   hashtagInput.value = '';
   commentsInput.value = '';
@@ -18,6 +17,8 @@ const clearsFieldsUploadPictureModal = () => {
   effectLevelContauner.classList.add('hidden');
   fotoPreview.removeAttribute('class');
   fotoPreview.removeAttribute('style');
+  // sizeFotoPreviev.value = `${MAX_SIZE_VALUE}%`;
+  sizeFotoPreviev.setAttribute('value', `${MAX_SIZE_VALUE}%`);
 };
 
 const closeUploadPictureModal = () => {
@@ -33,6 +34,10 @@ const openUploadPictureModal = () => {
 };
 
 hashtagInput.addEventListener('blur', () => {
+  onModalEscapeKeydown(closeUploadPictureModal);
+});
+
+commentsInput.addEventListener('blur', () => {
   onModalEscapeKeydown(closeUploadPictureModal);
 });
 
