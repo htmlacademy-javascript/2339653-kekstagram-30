@@ -6,6 +6,7 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const effectLevelContauner = document.querySelector('.effect-level');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const effectList = document.querySelector('.effects__list');
+const effectRadioButtons = effectList.querySelectorAll('.effects__radio');
 
 effectLevelContauner.classList.add('hidden');
 
@@ -41,7 +42,15 @@ const setEffectValue = () => {
   fotoPreview.style.filter = `${CURRENT_EFFECT.effect}(${effectLevelValue.value}${CURRENT_EFFECT.unit})`;
 };
 
+const removeCheckedRadio = () => {
+  effectRadioButtons.forEach((effectRadioButton) => {
+    effectRadioButton.removeAttribute('checked');
+  });
+};
+
 effectList.addEventListener('click', (evt) => {
+  removeCheckedRadio();
+  evt.target.setAttribute('checked', '');
   if (evt.target.checked) {
     effectLevelContauner.classList.remove('hidden');
     fotoPreview.removeAttribute('class');
@@ -122,3 +131,4 @@ sliderElement.noUiSlider.on('update', setEffectValue);
 
 export { effectLevelContauner };
 export { sliderElement };
+export { effectRadioButtons };
