@@ -1,4 +1,4 @@
-import { onModalEscapeKeydown } from './util';
+import { onModalEscapeKeydown, isEscapeKey } from './util';
 import { clearsFieldsUploadPictureModal } from './form-modal-window';
 
 const errorMessageGetTemplate = document.querySelector('#data-error').content;
@@ -52,6 +52,13 @@ const errorMessageForPost = () => {
   const closeErrorWindow = () => {
     document.querySelector('.error').remove();
   };
+
+  document.addEventListener('keydown', (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      closeErrorWindow();
+    }
+  }, { once: true });
 
   buttonCloseError.addEventListener('click', (closeErrorWindow));
   overlayForError.addEventListener('click', (closeErrorWindow));

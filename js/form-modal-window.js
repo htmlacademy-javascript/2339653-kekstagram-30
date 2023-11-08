@@ -17,7 +17,6 @@ const clearsFieldsUploadPictureModal = () => {
   effectLevelContauner.classList.add('hidden');
   fotoPreview.removeAttribute('class');
   fotoPreview.removeAttribute('style');
-  // sizeFotoPreviev.value = `${MAX_SIZE_VALUE}%`;
   sizeFotoPreviev.setAttribute('value', `${MAX_SIZE_VALUE}%`);
 };
 
