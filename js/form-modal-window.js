@@ -25,7 +25,7 @@ const closeUploadPictureModal = () => {
   overlayForForm.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   clearsFieldsUploadPictureModal();
-  effectRadioButtons[0].setAttribute('checked', '');
+  effectRadioButtons[0].checked = true;
 };
 
 const openUploadPictureModal = () => {
