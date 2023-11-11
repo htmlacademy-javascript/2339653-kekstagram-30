@@ -33,7 +33,7 @@ startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
 
 const showBigPicture = (data) => {
   const miniaturePictures = document.querySelectorAll('.picture');
-  miniaturePictures.forEach((miniaturePicture) => {
+  miniaturePictures.forEach((miniaturePicture, index) => {
     miniaturePicture.addEventListener('click', (evt) => {
       evt.preventDefault();
       openBigPictureModal();
@@ -41,7 +41,7 @@ const showBigPicture = (data) => {
 
       const currentId = miniaturePicture.querySelector('.picture__img').id;
       getCommentsList(currentId, data);
-      bigPictureModal.querySelector('img').src = miniaturePicture.querySelector('.picture__img').src;
+      bigPictureModal.querySelector('img').src = data[index].url;
       infoBigPictureModal.querySelector('.likes-count').textContent = miniaturePicture.querySelector('.picture__likes').textContent;
       infoBigPictureModal.querySelector('.social__caption').textContent = miniaturePicture.querySelector('.picture__img').alt;
       infoBigPictureModal.querySelector('.social__comment-total-count').textContent = miniaturePicture.querySelector('.picture__comments').textContent;

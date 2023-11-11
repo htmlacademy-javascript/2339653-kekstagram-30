@@ -1,11 +1,12 @@
 import { fotoPreview } from './changing-picture-size';
-import { sizeFotoPreviev } from './changing-picture-size';
+import { sizeFotoPreview } from './changing-picture-size';
 
 const START_EFFECT_VALUE = 100;
 const sliderElement = document.querySelector('.effect-level__slider');
 const effectLevelContauner = document.querySelector('.effect-level');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const effectList = document.querySelector('.effects__list');
+const effectRadioButtons = effectList.querySelectorAll('.effects__radio');
 
 effectLevelContauner.classList.add('hidden');
 
@@ -41,13 +42,22 @@ const setEffectValue = () => {
   fotoPreview.style.filter = `${CURRENT_EFFECT.effect}(${effectLevelValue.value}${CURRENT_EFFECT.unit})`;
 };
 
+const removeCheckedRadio = () => {
+  effectRadioButtons.forEach((effectRadioButton) => {
+    effectRadioButton.removeAttribute('checked');
+  });
+};
+
 effectList.addEventListener('click', (evt) => {
+  removeCheckedRadio();
+  evt.target.setAttribute('checked', '');
   if (evt.target.checked) {
     effectLevelContauner.classList.remove('hidden');
     fotoPreview.removeAttribute('class');
     fotoPreview.removeAttribute('style');
     effectLevelValue.value = START_EFFECT_VALUE;
-    sizeFotoPreviev.value = `${START_EFFECT_VALUE}%`;
+    fotoPreview.style.transform = `scale(${+sizeFotoPreview.value.replace(/\D/g, '') / START_EFFECT_VALUE})`;
+
     fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
   }
   if (evt.target.value === 'none') {
@@ -121,3 +131,4 @@ sliderElement.noUiSlider.on('update', setEffectValue);
 
 export { effectLevelContauner };
 export { sliderElement };
+export { effectRadioButtons };
