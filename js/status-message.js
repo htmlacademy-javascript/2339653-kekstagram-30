@@ -1,4 +1,4 @@
-import { onModalEscapeKeydown } from './util';
+import { onModalEscapeKeydown, isEscapeKey } from './util';
 import { clearsFieldsUploadPictureModal } from './form-modal-window';
 
 const errorMessageGetTemplate = document.querySelector('#data-error').content;
@@ -28,13 +28,13 @@ const successMessages = () => {
   const successContainer = document.querySelector('.success__inner');
 
   const closeSuccessWindow = () => {
-    document.querySelector('.success').remove();
     clearsFieldsUploadPictureModal();
+    document.querySelector('.success').remove();
   };
 
   onModalEscapeKeydown(closeSuccessWindow);
-  buttonCloseSuccess.addEventListener('click', (closeSuccessWindow));
-  overlayForSuccess.addEventListener('click', (closeSuccessWindow));
+  buttonCloseSuccess.addEventListener('click', closeSuccessWindow);
+  overlayForSuccess.addEventListener('click', closeSuccessWindow);
   successContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 
@@ -53,8 +53,15 @@ const errorMessageForPost = () => {
     document.querySelector('.error').remove();
   };
 
-  buttonCloseError.addEventListener('click', (closeErrorWindow));
-  overlayForError.addEventListener('click', (closeErrorWindow));
+  document.addEventListener('keydown', (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      closeErrorWindow();
+    }
+  }, { once: true });
+
+  buttonCloseError.addEventListener('click', closeErrorWindow);
+  overlayForError.addEventListener('click', closeErrorWindow);
   errorContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 

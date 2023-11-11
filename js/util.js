@@ -12,6 +12,9 @@ const stopIsEscapeKey = (element) => {
 
 const onModalEscapeKeydown = (callback) => {
   document.addEventListener('keydown', (evt) => {
+    if (document.querySelectorAll('.error__inner').length > 0) {
+      return;
+    }
     if (isEscapeKey(evt)) {
       evt.preventDefault();
       callback();

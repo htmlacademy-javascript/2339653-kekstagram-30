@@ -1,4 +1,4 @@
-import { errorMessageForPost } from './error-message.js';
+import { errorMessageForPost } from './status-message.js';
 import { isRepeatElement } from './util.js';
 import { checkStringLength } from './util.js';
 import { sendDataForServer } from './api.js';
@@ -24,9 +24,6 @@ const checksFormValidation = (onSuccess) => {
     const isValid = pristine.validate();
 
     if (isValid) {
-      // заглушил и не удалил к-логи, так как пока они нужны для проверок
-      // eslint-disable-next-line no-console
-      console.log('можно отправлять');
       submitButton.disabled = true;
 
       sendDataForServer(new FormData(evt.target))
@@ -37,9 +34,6 @@ const checksFormValidation = (onSuccess) => {
         .finally(() => {
           submitButton.disabled = false;
         });
-    } else {
-      // eslint-disable-next-line no-console
-      console.log('нельзя отправлять');
     }
   });
 };
