@@ -24,9 +24,6 @@ const checksFormValidation = (onSuccess) => {
     const isValid = pristine.validate();
 
     if (isValid) {
-      // TODO: заглушил и не удалил к-логи, так как пока они нужны для проверок
-      // eslint-disable-next-line no-console
-      console.log('можно отправлять');
       submitButton.disabled = true;
 
       sendDataForServer(new FormData(evt.target))
@@ -37,10 +34,6 @@ const checksFormValidation = (onSuccess) => {
         .finally(() => {
           submitButton.disabled = false;
         });
-    } else {
-      // TODO: заглушил и не удалил к-логи, так как пока они нужны для проверок
-      // eslint-disable-next-line no-console
-      console.log('нельзя отправлять');
     }
   });
 };
