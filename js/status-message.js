@@ -1,12 +1,12 @@
 import { onModalEscapeKeydown, isEscapeKey } from './util';
-import { clearsFieldsUploadPictureModal } from './form-modal-window';
+import { clearFieldsUploadPictureModal } from './form-modal-window';
 
 const errorMessageGetTemplate = document.querySelector('#data-error').content;
 const successMessageTemplate = document.querySelector('#success').content;
 const errorMessagePostTemplate = document.querySelector('#error').content;
 const ALERT_SHOW_TIME = 5000;
 
-const errorMessagesForGet = () => {
+const showErrorMessagesForGet = () => {
   const createErrorMessage = document.createDocumentFragment();
   const errorMessage = errorMessageGetTemplate.cloneNode(true);
   createErrorMessage.appendChild(errorMessage);
@@ -17,7 +17,7 @@ const errorMessagesForGet = () => {
   }, ALERT_SHOW_TIME);
 };
 
-const successMessages = () => {
+const showSuccessMessages = () => {
   const createSuccessMessage = document.createDocumentFragment();
   const successMessage = successMessageTemplate.cloneNode(true);
   createSuccessMessage.appendChild(successMessage);
@@ -28,7 +28,7 @@ const successMessages = () => {
   const successContainer = document.querySelector('.success__inner');
 
   const closeSuccessWindow = () => {
-    clearsFieldsUploadPictureModal();
+    clearFieldsUploadPictureModal();
     document.querySelector('.success').remove();
   };
 
@@ -38,7 +38,7 @@ const successMessages = () => {
   successContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 
-const errorMessageForPost = () => {
+const showErrorMessageForPost = () => {
 
   const createErrorMessage = document.createDocumentFragment();
   const errorMessage = errorMessagePostTemplate.cloneNode(true);
@@ -65,6 +65,6 @@ const errorMessageForPost = () => {
   errorContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 
-export { successMessages };
-export { errorMessagesForGet };
-export { errorMessageForPost };
+export { showSuccessMessages };
+export { showErrorMessagesForGet };
+export { showErrorMessageForPost };

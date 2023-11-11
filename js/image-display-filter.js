@@ -1,6 +1,6 @@
 import { createMiniaturesList } from './miniatures';
 import { showBigPicture } from './modal-big-picture.js';
-import { comparPictures, debounce } from './util.js';
+import { comparePictures, debounce } from './util.js';
 
 const imageFilters = document.querySelector('.img-filters');
 const imageFiltersForm = imageFilters.querySelector('.img-filters__form');
@@ -23,7 +23,7 @@ const filterItems = (photos, filter) => {
     showBigPicture(photos);
   }
   if (filter.id.endsWith('discussed')) {
-    photos.sort(comparPictures);
+    photos.sort(comparePictures);
     createMiniaturesList(photos);
     showBigPicture(photos);
   }

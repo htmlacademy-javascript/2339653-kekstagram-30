@@ -10,7 +10,7 @@ const overlayForForm = document.querySelector('.img-upload__overlay');
 const uploadFotoInput = document.querySelector('.img-upload__input');
 const closeUploadPictureModalButton = document.querySelector('.img-upload__cancel');
 
-const clearsFieldsUploadPictureModal = () => {
+const clearFieldsUploadPictureModal = () => {
   uploadFotoInput.value = '';
   hashtagInput.value = '';
   commentsInput.value = '';
@@ -57,6 +57,6 @@ uploadFotoInput.addEventListener('change', () => {
   openUploadPictureModal();
 });
 
-export { openUploadPictureModal, closeUploadPictureModal, clearsFieldsUploadPictureModal };
+export { openUploadPictureModal, closeUploadPictureModal, clearFieldsUploadPictureModal };
 
 

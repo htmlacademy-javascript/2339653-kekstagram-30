@@ -1,4 +1,4 @@
-import { errorMessageForPost } from './status-message';
+import { showErrorMessageForPost } from './status-message';
 import { closeUploadPictureModal } from './form-modal-window';
 
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
@@ -22,7 +22,7 @@ const pictureUpload = () => {
 
   } else {
     closeUploadPictureModal();
-    errorMessageForPost();
+    showErrorMessageForPost();
     document.querySelector('.error__title').textContent = INCORRECT_IMAGE_FORMAT;
   }
 };

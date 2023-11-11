@@ -1,4 +1,4 @@
-import { errorMessageForPost } from './status-message.js';
+import { showErrorMessageForPost } from './status-message.js';
 import { isRepeatElement } from './util.js';
 import { checkStringLength } from './util.js';
 import { sendDataForServer } from './api.js';
@@ -29,7 +29,7 @@ const checksFormValidation = (onSuccess) => {
       sendDataForServer(new FormData(evt.target))
         .then(onSuccess)
         .catch(() => {
-          errorMessageForPost();
+          showErrorMessageForPost();
         })
         .finally(() => {
           submitButton.disabled = false;

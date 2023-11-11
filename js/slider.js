@@ -2,6 +2,11 @@ import { fotoPreview } from './changing-picture-size';
 import { sizeFotoPreview } from './changing-picture-size';
 
 const START_EFFECT_VALUE = 100;
+const CURRENT_EFFECT = {
+  effect: '',
+  unit: '',
+};
+
 const sliderElement = document.querySelector('.effect-level__slider');
 const effectLevelContauner = document.querySelector('.effect-level');
 const effectLevelValue = document.querySelector('.effect-level__value');
@@ -9,11 +14,6 @@ const effectList = document.querySelector('.effects__list');
 const effectRadioButtons = effectList.querySelectorAll('.effects__radio');
 
 effectLevelContauner.classList.add('hidden');
-
-const CURRENT_EFFECT = {
-  effect: '',
-  unit: '',
-};
 
 noUiSlider.create(sliderElement, {
   range: {

@@ -29,7 +29,7 @@ const getPictureRank = (picture) => {
   return rank;
 };
 
-const comparPictures = (pictureA, pictureB) => {
+const comparePictures = (pictureA, pictureB) => {
   const rankA = getPictureRank(pictureA);
   const rankB = getPictureRank(pictureB);
   return rankB - rankA;
@@ -48,5 +48,5 @@ export { isEscapeKey };
 export { stopIsEscapeKey };
 export { onModalEscapeKeydown };
 export { isRepeatElement };
-export { comparPictures };
+export { comparePictures };
 export { debounce };

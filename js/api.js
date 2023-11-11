@@ -1,6 +1,6 @@
 import { showFilters } from './image-display-filter.js';
-import { errorMessagesForGet } from './status-message.js';
-import { successMessages } from './status-message.js';
+import { showErrorMessagesForGet } from './status-message.js';
+import { showSuccessMessages } from './status-message.js';
 
 const ACADEMY_SERVER = 'https://30.javascript.pages.academy/kekstagram';
 const Route = {
@@ -20,7 +20,7 @@ const getDataFromServer = (cb) => {
       cb(pictures);
       showFilters();
     })
-    .catch(() => errorMessagesForGet());
+    .catch(() => showErrorMessagesForGet());
 };
 
 const sendDataForServer = (body) => fetch(
@@ -33,7 +33,7 @@ const sendDataForServer = (body) => fetch(
     if (!response.ok) {
       throw new Error();
     }
-    successMessages();
+    showSuccessMessages();
 
   });
 
