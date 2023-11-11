@@ -51,6 +51,7 @@ const removeCheckedRadio = () => {
 effectList.addEventListener('click', (evt) => {
   removeCheckedRadio();
   evt.target.setAttribute('checked', '');
+
   if (evt.target.checked) {
     effectLevelContauner.classList.remove('hidden');
     fotoPreview.removeAttribute('class');
@@ -131,4 +132,4 @@ sliderElement.noUiSlider.on('update', setEffectValue);
 
 export { effectLevelContauner };
 export { sliderElement };
-export { effectRadioButtons };
+export { effectRadioButtons, removeCheckedRadio };

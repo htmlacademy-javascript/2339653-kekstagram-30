@@ -4,7 +4,7 @@ import { hashtagInput, commentsInput, pristine } from './validation-data.js';
 import { effectLevelContauner } from './slider.js';
 import { fotoPreview, sizeFotoPreview, MAX_SIZE_VALUE } from './changing-picture-size.js';
 import { pictureUpload } from './upload-foto.js';
-import { effectRadioButtons } from './slider.js';
+import { effectRadioButtons, removeCheckedRadio } from './slider.js';
 
 const overlayForForm = document.querySelector('.img-upload__overlay');
 const uploadFotoInput = document.querySelector('.img-upload__input');
@@ -22,9 +22,12 @@ const clearsFieldsUploadPictureModal = () => {
 };
 
 const closeUploadPictureModal = () => {
+
   overlayForForm.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   clearsFieldsUploadPictureModal();
+  removeCheckedRadio();
+  effectRadioButtons[0].setAttribute('checked', '');
   effectRadioButtons[0].checked = true;
 };
 
