@@ -38,6 +38,7 @@ noUiSlider.create(sliderElement, {
 
 const setEffectValue = () => {
   effectLevelValue.value = sliderElement.noUiSlider.get();
+  effectLevelValue.setAttribute('value', sliderElement.noUiSlider.get());
   effectLevelValue.readonly = effectLevelValue.value;
   fotoPreview.style.filter = `${CURRENT_EFFECT.effect}(${effectLevelValue.value}${CURRENT_EFFECT.unit})`;
 };
@@ -50,7 +51,6 @@ const removeCheckedRadio = () => {
 
 effectList.addEventListener('click', (evt) => {
   removeCheckedRadio();
-  evt.target.setAttribute('checked', '');
 
   if (evt.target.checked) {
     effectLevelContauner.classList.remove('hidden');
