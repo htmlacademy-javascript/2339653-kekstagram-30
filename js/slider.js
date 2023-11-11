@@ -65,6 +65,7 @@ effectList.addEventListener('click', (evt) => {
     CURRENT_EFFECT.effect = '';
     CURRENT_EFFECT.unit = '';
     effectLevelContauner.classList.add('hidden');
+    effectLevelValue.setAttribute('value', '');
   }
   if (evt.target.value === 'chrome') {
     CURRENT_EFFECT.effect = 'grayscale';
