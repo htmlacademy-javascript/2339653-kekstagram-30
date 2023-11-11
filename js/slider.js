@@ -56,7 +56,7 @@ effectList.addEventListener('click', (evt) => {
     fotoPreview.removeAttribute('class');
     fotoPreview.removeAttribute('style');
     effectLevelValue.value = START_EFFECT_VALUE;
-    fotoPreview.style.transform = `scale(${+sizeFotoPreview.value.replace(/\D/g, '') / 100})`;
+    fotoPreview.style.transform = `scale(${+sizeFotoPreview.value.replace(/\D/g, '') / START_EFFECT_VALUE})`;
 
     fotoPreview.classList.add(`effects__preview--${evt.target.value}`);
   }

@@ -32,6 +32,7 @@ const openUploadPictureModal = () => {
   overlayForForm.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
   onModalEscapeKeydown(closeUploadPictureModal);
+  pictureUpload();
 };
 
 hashtagInput.addEventListener('blur', () => {
@@ -51,7 +52,6 @@ closeUploadPictureModalButton.addEventListener('click', () => {
 
 uploadFotoInput.addEventListener('change', () => {
   openUploadPictureModal();
-  pictureUpload();
 });
 
 export { openUploadPictureModal, closeUploadPictureModal, clearsFieldsUploadPictureModal };

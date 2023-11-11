@@ -11,7 +11,7 @@ const reducesSize = () => {
     sizeFotoPreview.readonly = false;
 
     sizeFotoPreview.setAttribute('value', `${sizeFotoPreview.value.replace(/\D/g, '') - SIZE_STEP}%`);
-    fotoPreview.style.transform = `scale(${+sizeFotoPreview.value.replace(/\D/g, '') / 100})`;
+    fotoPreview.style.transform = `scale(${+sizeFotoPreview.value.replace(/\D/g, '') / MAX_SIZE_VALUE})`;
     sizeFotoPreview.setAttribute('value', sizeFotoPreview.value);
   }
 };
@@ -21,7 +21,7 @@ const increasesSize = () => {
     sizeFotoPreview.readonly = false;
 
     sizeFotoPreview.setAttribute('value', `${+sizeFotoPreview.value.replace(/\D/g, '') + SIZE_STEP}%`);
-    fotoPreview.style.transform = `scale(${+sizeFotoPreview.value.replace(/\D/g, '') / 100})`;
+    fotoPreview.style.transform = `scale(${+sizeFotoPreview.value.replace(/\D/g, '') / MAX_SIZE_VALUE})`;
   }
 };
 
