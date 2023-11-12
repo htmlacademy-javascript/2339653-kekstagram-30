@@ -1,6 +1,6 @@
 const showCount = document.querySelector('.social__comment-shown-count');
 
-const startLogicForCommentShownCount = (button, commentsLengthDefault) => {
+const logicForCommentShownCountHandler = (button, commentsLengthDefault) => {
   button.addEventListener('click', () => {
     const socialComment = document.querySelectorAll('.social__comment');
     let showCountValue = +showCount.textContent;
@@ -15,7 +15,7 @@ const startLogicForCommentShownCount = (button, commentsLengthDefault) => {
   });
 };
 
-const startLogicForUploadAdditionalComments = (button, commentsLength) => {
+const logicForUploadAdditionalCommentsHandler = (button, commentsLength) => {
   showCount.textContent = commentsLength;
   const socialComment = document.querySelectorAll('.social__comment');
   socialComment.forEach((element) => element.classList.add('hidden'));
@@ -44,5 +44,5 @@ const startLogicForUploadAdditionalComments = (button, commentsLength) => {
   });
 };
 
-export { startLogicForCommentShownCount };
-export { startLogicForUploadAdditionalComments };
+export { logicForCommentShownCountHandler };
+export { logicForUploadAdditionalCommentsHandler };

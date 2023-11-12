@@ -2,7 +2,7 @@ const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-const stopIsEscapeKey = (element) => {
+const onStopIsEscapeKey = (element) => {
   element.addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
       evt.stopPropagation();
@@ -10,18 +10,6 @@ const stopIsEscapeKey = (element) => {
   });
 };
 
-
-const onModalEscapeKeydown = (callback) => {
-  document.addEventListener('keydown', (evt) => {
-    if (document.querySelectorAll('.error__inner').length > 0) {
-      return;
-    }
-    if (isEscapeKey(evt)) {
-      evt.preventDefault();
-      callback();
-    }
-  } /*, { once: true }*/);
-};
 
 const isRepeatElement = (array) => array.length !== new Set(array).size;
 
@@ -46,8 +34,7 @@ const debounce = (callback, timeoutDelay) => {
 
 export { checkStringLength };
 export { isEscapeKey };
-export { stopIsEscapeKey };
-export { onModalEscapeKeydown };
+export { onStopIsEscapeKey };
 export { isRepeatElement };
 export { comparePictures };
 export { debounce };

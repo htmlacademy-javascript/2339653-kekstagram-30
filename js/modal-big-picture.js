@@ -1,6 +1,6 @@
 import { getCommentsList } from './list-comments.js';
-import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
-import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
+import { logicForCommentShownCountHandler } from './logic-list-comments-modal.js';
+import { logicForUploadAdditionalCommentsHandler } from './logic-list-comments-modal.js';
 import { isEscapeKey } from './util.js';
 
 const COMMENTS_UPLOAD_VOLUME = 5;
@@ -13,17 +13,17 @@ const loadCommentsButton = document.querySelector('.comments-loader');
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeBigPictureModal();
+    closeBigPictureModalHandler();
   }
 };
 
-function openBigPictureModal () {
+function openBigPictureModalHandler () {
   bigPictureModal.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 }
 
-function closeBigPictureModal () {
+function closeBigPictureModalHandler () {
   bigPictureModal.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   document.querySelector('.comments-loader').classList.remove('hidden');
@@ -31,18 +31,17 @@ function closeBigPictureModal () {
 }
 
 closeModalButton.addEventListener('click', () => {
-  closeBigPictureModal();
-
+  closeBigPictureModalHandler();
 });
 
-startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
+logicForCommentShownCountHandler(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
 
 const showBigPicture = (data) => {
   const miniaturePictures = document.querySelectorAll('.picture');
   miniaturePictures.forEach((miniaturePicture, index) => {
     miniaturePicture.addEventListener('click', (evt) => {
       evt.preventDefault();
-      openBigPictureModal();
+      openBigPictureModalHandler();
 
       const currentId = miniaturePicture.querySelector('.picture__img').id;
       getCommentsList(currentId, data);
@@ -54,7 +53,7 @@ const showBigPicture = (data) => {
       if (currentCommentShown > COMMENTS_UPLOAD_VOLUME) {
         currentCommentShown = COMMENTS_UPLOAD_VOLUME;
       }
-      startLogicForUploadAdditionalComments(loadCommentsButton, currentCommentShown);
+      logicForUploadAdditionalCommentsHandler(loadCommentsButton, currentCommentShown);
     });
   });
 };

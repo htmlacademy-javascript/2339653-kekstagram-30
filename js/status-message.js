@@ -31,20 +31,20 @@ const showSuccessMessage = () => {
   const onCloseFromKeyboardForSuccessMessage = (evt) => {
     if (isEscapeKey(evt)) {
       evt.preventDefault();
-      closeSuccessWindow();
+      closeSuccessWindowHandler();
     }
   };
 
   document.addEventListener('keydown', onCloseFromKeyboardForSuccessMessage);
 
-  function closeSuccessWindow() {
+  function closeSuccessWindowHandler() {
     clearFieldsUploadPictureModal();
     document.querySelector('.success').remove();
     document.removeEventListener('keydown', onCloseFromKeyboardForSuccessMessage);
   }
 
-  buttonCloseSuccess.addEventListener('click', closeSuccessWindow);
-  overlayForSuccess.addEventListener('click', closeSuccessWindow);
+  buttonCloseSuccess.addEventListener('click', closeSuccessWindowHandler);
+  overlayForSuccess.addEventListener('click', closeSuccessWindowHandler);
   successContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 
@@ -60,22 +60,21 @@ const showErrorMessageForPost = () => {
   const errorContainer = document.querySelector('.error__inner');
 
   const onCloseFromKeyboardForErrorMessage = (evt) => {
-
     if (isEscapeKey(evt)) {
       evt.preventDefault();
-      closeErrorWindow();
+      closeErrorWindowHandler();
     }
   };
 
   document.addEventListener('keydown', onCloseFromKeyboardForErrorMessage);
 
-  function closeErrorWindow() {
+  function closeErrorWindowHandler() {
     document.querySelector('.error').remove();
     document.removeEventListener('keydown', onCloseFromKeyboardForErrorMessage);
   }
 
-  buttonCloseError.addEventListener('click', closeErrorWindow);
-  overlayForError.addEventListener('click', closeErrorWindow);
+  buttonCloseError.addEventListener('click', closeErrorWindowHandler);
+  overlayForError.addEventListener('click', closeErrorWindowHandler);
   errorContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 

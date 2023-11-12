@@ -1,5 +1,5 @@
 import { showErrorMessageForPost } from './status-message';
-import { closeUploadPictureModal } from './form-modal-window';
+import { closeUploadPictureModalHandler } from './form-modal-window';
 
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const INCORRECT_IMAGE_FORMAT = `Ошибка. Используйте  форматы: ${FILE_TYPES.join(', ')}`;
@@ -21,7 +21,7 @@ const pictureUpload = () => {
     });
 
   } else {
-    closeUploadPictureModal();
+    closeUploadPictureModalHandler();
     showErrorMessageForPost();
     document.querySelector('.error__title').textContent = INCORRECT_IMAGE_FORMAT;
   }

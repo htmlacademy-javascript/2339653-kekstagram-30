@@ -9,10 +9,6 @@ const imageFilters = document.querySelector('.img-filters');
 const imageFiltersForm = imageFilters.querySelector('.img-filters__form');
 const imageFilterButtons = imageFilters.querySelectorAll('.img-filters__button');
 
-const showFilters = () => {
-  imageFilters.classList.remove('img-filters--inactive');
-};
-
 const filterItems = (photos, filter) => {
   if (filter.id.endsWith('default')) {
     createMiniaturesList(photos);
@@ -28,6 +24,10 @@ const filterItems = (photos, filter) => {
     createMiniaturesList(photos);
     showBigPicture(photos);
   }
+};
+
+const showFilters = () => {
+  imageFilters.classList.remove('img-filters--inactive');
 };
 
 const setFilterHandlers = (photos) => {

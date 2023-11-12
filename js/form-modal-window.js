@@ -1,14 +1,13 @@
-import { isEscapeKey, stopIsEscapeKey } from './util.js';
-// import { onModalEscapeKeydown } from './util.js';
+import { isEscapeKey, onStopIsEscapeKey } from './util.js';
 import { hashtagInput, commentsInput, pristine } from './validation-data.js';
 import { effectLevelContauner } from './slider.js';
 import { fotoPreview, sizeFotoPreview, MAX_SIZE_VALUE } from './changing-picture-size.js';
 import { pictureUpload } from './upload-foto.js';
-import { effectRadioButtons, removeCheckedRadio } from './slider.js';
+import { effectRadioButtons, removeCheckedsRadioHandler } from './slider.js';
 
 const overlayForForm = document.querySelector('.img-upload__overlay');
 const uploadFotoInput = document.querySelector('.img-upload__input');
-const closeUploadPictureModalButton = document.querySelector('.img-upload__cancel');
+const closeButtonUploadPictureModal = document.querySelector('.img-upload__cancel');
 
 const clearFieldsUploadPictureModal = () => {
   uploadFotoInput.value = '';
@@ -27,46 +26,38 @@ const onCloseFromKeyboard = (evt) => {
   }
   if(isEscapeKey(evt)) {
     evt.preventDefault();
-    closeUploadPictureModal();
+    closeUploadPictureModalHandler();
   }
 };
 
-function closeUploadPictureModal () {
+function closeUploadPictureModalHandler () {
   overlayForForm.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   clearFieldsUploadPictureModal();
-  removeCheckedRadio();
+  removeCheckedsRadioHandler();
   effectRadioButtons[0].setAttribute('checked', '');
   effectRadioButtons[0].checked = true;
   document.removeEventListener('keydown', onCloseFromKeyboard);
 }
 
-function openUploadPictureModal () {
+function openUploadPictureModalHandler () {
   overlayForForm.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
   document.addEventListener('keydown', onCloseFromKeyboard);
   pictureUpload();
 }
 
-// hashtagInput.addEventListener('blur', () => {
-//   onCloseFromKeyboard();
-// });
+onStopIsEscapeKey(hashtagInput);
+onStopIsEscapeKey(commentsInput);
 
-// commentsInput.addEventListener('blur', () => {
-//   onModalEscapeKeydown(closeUploadPictureModal);
-// });
-
-stopIsEscapeKey(hashtagInput);
-stopIsEscapeKey(commentsInput);
-
-closeUploadPictureModalButton.addEventListener('click', () => {
-  closeUploadPictureModal();
+closeButtonUploadPictureModal.addEventListener('click', () => {
+  closeUploadPictureModalHandler();
 });
 
 uploadFotoInput.addEventListener('change', () => {
-  openUploadPictureModal();
+  openUploadPictureModalHandler();
 });
 
-export { openUploadPictureModal, closeUploadPictureModal, clearFieldsUploadPictureModal };
+export { openUploadPictureModalHandler, closeUploadPictureModalHandler, clearFieldsUploadPictureModal };
 
 
