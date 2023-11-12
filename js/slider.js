@@ -51,6 +51,7 @@ const removeCheckedsRadioHandler = () => {
 
 effectList.addEventListener('click', (evt) => {
   removeCheckedsRadioHandler();
+  evt.target.setAttribute('checked', '');
 
   if (evt.target.checked) {
     effectLevelContauner.classList.remove('hidden');
