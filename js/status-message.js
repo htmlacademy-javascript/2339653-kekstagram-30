@@ -1,10 +1,11 @@
 import { onModalEscapeKeydown, isEscapeKey } from './util';
 import { clearFieldsUploadPictureModal } from './form-modal-window';
 
+const ALERT_SHOW_TIME = 5000;
+
 const errorMessageGetTemplate = document.querySelector('#data-error').content;
 const successMessageTemplate = document.querySelector('#success').content;
 const errorMessagePostTemplate = document.querySelector('#error').content;
-const ALERT_SHOW_TIME = 5000;
 
 const showErrorMessagesForGet = () => {
   const createErrorMessage = document.createDocumentFragment();

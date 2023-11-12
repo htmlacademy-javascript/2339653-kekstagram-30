@@ -3,12 +3,13 @@ import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
 import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
 import { onModalEscapeKeydown } from './util.js';
 
+const COMMENTS_UPLOAD_VOLUME = 5;
+
 const bigPictureModal = document.querySelector('.big-picture');
 const infoBigPictureModal = document.querySelector('.big-picture__social');
 const closeModalButton = bigPictureModal.querySelector('.big-picture__cancel');
 const loadCommentsButton = document.querySelector('.comments-loader');
 const inputCommentBigPicture = document.querySelector('.social__footer-text');
-const COMMENTS_UPLOAD_VOLUME = 5;
 
 const openBigPictureModal = () => {
   bigPictureModal.classList.remove('hidden');

@@ -1,5 +1,4 @@
 const bigPictureCommentsContainer = document.querySelector('.social__comments');
-
 const bigPictureCommentItem = bigPictureCommentsContainer.querySelector('.social__comment');
 
 const getCommentsList = (current, data) => {
