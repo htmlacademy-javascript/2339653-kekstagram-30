@@ -10,6 +10,7 @@ const stopIsEscapeKey = (element) => {
   });
 };
 
+
 const onModalEscapeKeydown = (callback) => {
   document.addEventListener('keydown', (evt) => {
     if (document.querySelectorAll('.error__inner').length > 0) {
@@ -19,7 +20,7 @@ const onModalEscapeKeydown = (callback) => {
       evt.preventDefault();
       callback();
     }
-  }, { once: true });
+  } /*, { once: true }*/);
 };
 
 const isRepeatElement = (array) => array.length !== new Set(array).size;
@@ -50,3 +51,4 @@ export { onModalEscapeKeydown };
 export { isRepeatElement };
 export { comparePictures };
 export { debounce };
+

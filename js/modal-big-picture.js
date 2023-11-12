@@ -1,7 +1,7 @@
 import { getCommentsList } from './list-comments.js';
 import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
 import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
-import { onModalEscapeKeydown } from './util.js';
+import { isEscapeKey /* onModalEscapeKeydown*/ } from './util.js';
 
 const COMMENTS_UPLOAD_VOLUME = 5;
 
@@ -9,25 +9,30 @@ const bigPictureModal = document.querySelector('.big-picture');
 const infoBigPictureModal = document.querySelector('.big-picture__social');
 const closeModalButton = bigPictureModal.querySelector('.big-picture__cancel');
 const loadCommentsButton = document.querySelector('.comments-loader');
-const inputCommentBigPicture = document.querySelector('.social__footer-text');
 
-const openBigPictureModal = () => {
-  bigPictureModal.classList.remove('hidden');
-  document.querySelector('body').classList.add('modal-open');
+const onDocumentKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeBigPictureModal();
+  }
 };
 
-const closeBigPictureModal = () => {
+function openBigPictureModal() {
+  bigPictureModal.classList.remove('hidden');
+  document.querySelector('body').classList.add('modal-open');
+  document.addEventListener('keydown', onDocumentKeydown);
+}
+
+function closeBigPictureModal () {
   bigPictureModal.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   document.querySelector('.comments-loader').classList.remove('hidden');
-};
+  document.removeEventListener('keydown', onDocumentKeydown);
+}
 
 closeModalButton.addEventListener('click', () => {
   closeBigPictureModal();
-});
 
-inputCommentBigPicture.addEventListener('blur', () => {
-  onModalEscapeKeydown(closeBigPictureModal);
 });
 
 startLogicForCommentShownCount(loadCommentsButton, COMMENTS_UPLOAD_VOLUME);
@@ -38,7 +43,6 @@ const showBigPicture = (data) => {
     miniaturePicture.addEventListener('click', (evt) => {
       evt.preventDefault();
       openBigPictureModal();
-      onModalEscapeKeydown(closeBigPictureModal);
 
       const currentId = miniaturePicture.querySelector('.picture__img').id;
       getCommentsList(currentId, data);
