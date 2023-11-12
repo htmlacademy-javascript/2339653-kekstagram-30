@@ -1,4 +1,4 @@
-import { onModalEscapeKeydown, isEscapeKey } from './util';
+import { isEscapeKey } from './util';
 import { clearFieldsUploadPictureModal } from './form-modal-window';
 
 const ALERT_SHOW_TIME = 5000;
@@ -18,7 +18,7 @@ const showErrorMessagesForGet = () => {
   }, ALERT_SHOW_TIME);
 };
 
-const showSuccessMessages = () => {
+const showSuccessMessage = () => {
   const createSuccessMessage = document.createDocumentFragment();
   const successMessage = successMessageTemplate.cloneNode(true);
   createSuccessMessage.appendChild(successMessage);
@@ -28,12 +28,21 @@ const showSuccessMessages = () => {
   const overlayForSuccess = document.querySelector('.success');
   const successContainer = document.querySelector('.success__inner');
 
-  const closeSuccessWindow = () => {
-    clearFieldsUploadPictureModal();
-    document.querySelector('.success').remove();
+  const onCloseFromKeyboardForSuccessMessage = (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      closeSuccessWindow();
+    }
   };
 
-  onModalEscapeKeydown(closeSuccessWindow);
+  document.addEventListener('keydown', onCloseFromKeyboardForSuccessMessage);
+
+  function closeSuccessWindow() {
+    clearFieldsUploadPictureModal();
+    document.querySelector('.success').remove();
+    document.removeEventListener('keydown', onCloseFromKeyboardForSuccessMessage);
+  }
+
   buttonCloseSuccess.addEventListener('click', closeSuccessWindow);
   overlayForSuccess.addEventListener('click', closeSuccessWindow);
   successContainer.addEventListener('click', (evt) => evt.stopPropagation());
@@ -50,22 +59,26 @@ const showErrorMessageForPost = () => {
   const overlayForError = document.querySelector('.error');
   const errorContainer = document.querySelector('.error__inner');
 
-  const closeErrorWindow = () => {
-    document.querySelector('.error').remove();
-  };
+  const onCloseFromKeyboardForErrorMessage = (evt) => {
 
-  document.addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
       evt.preventDefault();
       closeErrorWindow();
     }
-  }, { once: true });
+  };
+
+  document.addEventListener('keydown', onCloseFromKeyboardForErrorMessage);
+
+  function closeErrorWindow() {
+    document.querySelector('.error').remove();
+    document.removeEventListener('keydown', onCloseFromKeyboardForErrorMessage);
+  }
 
   buttonCloseError.addEventListener('click', closeErrorWindow);
   overlayForError.addEventListener('click', closeErrorWindow);
   errorContainer.addEventListener('click', (evt) => evt.stopPropagation());
 };
 
-export { showSuccessMessages };
+export { showSuccessMessage };
 export { showErrorMessagesForGet };
 export { showErrorMessageForPost };

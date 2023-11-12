@@ -1,7 +1,7 @@
 import { getCommentsList } from './list-comments.js';
 import { startLogicForCommentShownCount } from './logic-list-comments-modal.js';
 import { startLogicForUploadAdditionalComments } from './logic-list-comments-modal.js';
-import { isEscapeKey /* onModalEscapeKeydown*/ } from './util.js';
+import { isEscapeKey } from './util.js';
 
 const COMMENTS_UPLOAD_VOLUME = 5;
 
@@ -17,7 +17,7 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-function openBigPictureModal() {
+function openBigPictureModal () {
   bigPictureModal.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);

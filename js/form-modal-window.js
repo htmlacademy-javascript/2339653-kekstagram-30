@@ -1,5 +1,5 @@
-import { stopIsEscapeKey } from './util.js';
-import { onModalEscapeKeydown } from './util.js';
+import { isEscapeKey, stopIsEscapeKey } from './util.js';
+// import { onModalEscapeKeydown } from './util.js';
 import { hashtagInput, commentsInput, pristine } from './validation-data.js';
 import { effectLevelContauner } from './slider.js';
 import { fotoPreview, sizeFotoPreview, MAX_SIZE_VALUE } from './changing-picture-size.js';
@@ -21,30 +21,40 @@ const clearFieldsUploadPictureModal = () => {
   sizeFotoPreview.setAttribute('value', `${MAX_SIZE_VALUE}%`);
 };
 
-const closeUploadPictureModal = () => {
+const onCloseFromKeyboard = (evt) => {
+  if (document.querySelectorAll('.error__inner').length > 0) {
+    return;
+  }
+  if(isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeUploadPictureModal();
+  }
+};
 
+function closeUploadPictureModal () {
   overlayForForm.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   clearFieldsUploadPictureModal();
   removeCheckedRadio();
   effectRadioButtons[0].setAttribute('checked', '');
   effectRadioButtons[0].checked = true;
-};
+  document.removeEventListener('keydown', onCloseFromKeyboard);
+}
 
-const openUploadPictureModal = () => {
+function openUploadPictureModal () {
   overlayForForm.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
-  onModalEscapeKeydown(closeUploadPictureModal);
+  document.addEventListener('keydown', onCloseFromKeyboard);
   pictureUpload();
-};
+}
 
-hashtagInput.addEventListener('blur', () => {
-  onModalEscapeKeydown(closeUploadPictureModal);
-});
+// hashtagInput.addEventListener('blur', () => {
+//   onCloseFromKeyboard();
+// });
 
-commentsInput.addEventListener('blur', () => {
-  onModalEscapeKeydown(closeUploadPictureModal);
-});
+// commentsInput.addEventListener('blur', () => {
+//   onModalEscapeKeydown(closeUploadPictureModal);
+// });
 
 stopIsEscapeKey(hashtagInput);
 stopIsEscapeKey(commentsInput);
