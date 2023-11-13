@@ -133,5 +133,6 @@ effectList.addEventListener('click', (evt) => {
 sliderElement.noUiSlider.on('update', setEffectValue);
 
 export { effectLevelContauner };
+export { effectLevelValue };
 export { sliderElement };
 export { effectRadioButtons, removeCheckedsRadioHandler };

@@ -12,5 +12,3 @@ getDataFromServer((posts) => {
   showBigPicture(posts);
   setFilterHandlers(posts);
 });
-
-
