@@ -3,14 +3,14 @@ import { isRepeatElement } from './util.js';
 import { checkStringLength } from './util.js';
 import { sendDataForServer } from './api.js';
 
-const HASH_TAG_PATTERN = /^#[a-zа-яё0-9]{1,19}$/i;
-const MAX_HASHTAG_AMOUNT = 5;
-const MAX_LENGTH_COMMENT = 140;
-
 const formUploadFoto = document.querySelector('.img-upload__form');
 const hashtagInput = document.querySelector('.text__hashtags');
 const commentsInput = document.querySelector('.text__description');
 const submitButton = document.querySelector('.img-upload__submit');
+
+const HASH_TAG_PATTERN = /^#[a-zа-яё0-9]{1,19}$/i;
+const MAX_HASHTAG_AMOUNT = 5;
+const MAX_LENGTH_COMMENT = 140;
 
 const pristine = new Pristine(formUploadFoto, {
   classTo: 'form-group',

@@ -3,12 +3,12 @@ import { logicForCommentShownCountHandler } from './logic-list-comments-modal.js
 import { logicForUploadAdditionalCommentsHandler } from './logic-list-comments-modal.js';
 import { isEscapeKey } from './util.js';
 
-const COMMENTS_UPLOAD_VOLUME = 5;
-
 const bigPictureModal = document.querySelector('.big-picture');
 const infoBigPictureModal = document.querySelector('.big-picture__social');
 const closeModalButton = bigPictureModal.querySelector('.big-picture__cancel');
 const loadCommentsButton = document.querySelector('.comments-loader');
+
+const COMMENTS_UPLOAD_VOLUME = 5;
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {

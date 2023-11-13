@@ -1,11 +1,11 @@
-const MAX_SIZE_VALUE = 100;
-const MIN_SIZE_VALUE = 25;
-const SIZE_STEP = 25;
-
 const fotoPreview = document.querySelector('.img-upload__preview img');
 const sizeFotoPreview = document.querySelector('.scale__control--value');
 const buttonDecrementSize = document.querySelector('.scale__control--smaller');
 const buttomIncrementSize = document.querySelector('.scale__control--bigger');
+
+const MAX_SIZE_VALUE = 100;
+const MIN_SIZE_VALUE = 25;
+const SIZE_STEP = 25;
 
 const reduceSize = () => {
   if (sizeFotoPreview.value.replace(/\D/g, '') > MIN_SIZE_VALUE) {

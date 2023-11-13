@@ -2,12 +2,12 @@ import { createMiniaturesList } from './miniatures';
 import { showBigPicture } from './modal-big-picture.js';
 import { comparePictures, debounce } from './util.js';
 
-const MAX_RANDOM_PHOTO = 10;
-const DEBOUNCE_TIME = 500;
-
 const imageFilters = document.querySelector('.img-filters');
 const imageFiltersForm = imageFilters.querySelector('.img-filters__form');
 const imageFilterButtons = imageFilters.querySelectorAll('.img-filters__button');
+
+const MAX_RANDOM_PHOTO = 10;
+const DEBOUNCE_TIME = 500;
 
 const filterItems = (photos, filter) => {
   if (filter.id.endsWith('default')) {
