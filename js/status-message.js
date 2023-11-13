@@ -7,7 +7,7 @@ const errorMessageGetTemplate = document.querySelector('#data-error').content;
 const successMessageTemplate = document.querySelector('#success').content;
 const errorMessagePostTemplate = document.querySelector('#error').content;
 
-const showErrorMessagesForGet = () => {
+const showErrorMessageForGet = () => {
   const createErrorMessage = document.createDocumentFragment();
   const errorMessage = errorMessageGetTemplate.cloneNode(true);
   createErrorMessage.appendChild(errorMessage);
@@ -79,5 +79,5 @@ const showErrorMessageForPost = () => {
 };
 
 export { showSuccessMessage };
-export { showErrorMessagesForGet };
+export { showErrorMessageForGet };
 export { showErrorMessageForPost };
