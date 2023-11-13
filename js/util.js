@@ -38,4 +38,3 @@ export { onStopIsEscapeKey };
 export { isRepeatElement };
 export { comparePictures };
 export { debounce };
-

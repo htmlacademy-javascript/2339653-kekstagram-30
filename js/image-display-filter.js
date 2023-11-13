@@ -49,5 +49,3 @@ const setFilterHandlers = (photos) => {
 
 export { showFilters };
 export { setFilterHandlers };
-
-

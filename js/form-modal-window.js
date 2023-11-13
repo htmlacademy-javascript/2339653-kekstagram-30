@@ -60,5 +60,3 @@ uploadFotoInput.addEventListener('change', () => {
 });
 
 export { openUploadPictureModalHandler, closeUploadPictureModalHandler, clearFieldsUploadPictureModal };
-
-

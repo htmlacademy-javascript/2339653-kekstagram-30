@@ -59,4 +59,3 @@ const showBigPicture = (data) => {
 };
 
 export { showBigPicture };
-
