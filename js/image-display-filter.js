@@ -1,16 +1,13 @@
 import { createMiniaturesList } from './miniatures';
 import { showBigPicture } from './modal-big-picture.js';
-import { comparPictures, debounce } from './util.js';
+import { comparePictures, debounce } from './util.js';
 
 const imageFilters = document.querySelector('.img-filters');
 const imageFiltersForm = imageFilters.querySelector('.img-filters__form');
 const imageFilterButtons = imageFilters.querySelectorAll('.img-filters__button');
+
 const MAX_RANDOM_PHOTO = 10;
 const DEBOUNCE_TIME = 500;
-
-const showFilters = () => {
-  imageFilters.classList.remove('img-filters--inactive');
-};
 
 const filterItems = (photos, filter) => {
   if (filter.id.endsWith('default')) {
@@ -23,10 +20,14 @@ const filterItems = (photos, filter) => {
     showBigPicture(photos);
   }
   if (filter.id.endsWith('discussed')) {
-    photos.sort(comparPictures);
+    photos.sort(comparePictures);
     createMiniaturesList(photos);
     showBigPicture(photos);
   }
+};
+
+const showFilters = () => {
+  imageFilters.classList.remove('img-filters--inactive');
 };
 
 const setFilterHandlers = (photos) => {
@@ -48,5 +49,3 @@ const setFilterHandlers = (photos) => {
 
 export { showFilters };
 export { setFilterHandlers };
-
-
